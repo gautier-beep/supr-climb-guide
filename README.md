@@ -121,9 +121,7 @@ FROM gyms WHERE slug = 'boulder-space';
 
 Dans Supabase, va dans **Settings** > **API** et copie :
 - `Project URL` (ex: https://xxxxx.supabase.co)
-jxcspdrlccdosbfryqaq
 - `anon public` key (longue chaîne de caractères)
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp4Y3NwZHJsY2Nkb3NiZnJ5cWFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NTk4MDYsImV4cCI6MjA5NDMzNTgwNn0.ypdMAKPv1JYJnE9b2vBp6vhMI4s9DMYOfmkatrnM4EU
 
 ### Étape 4 : Déployer sur Vercel
 
