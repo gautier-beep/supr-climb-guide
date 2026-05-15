@@ -150,6 +150,18 @@ export default function LearnPage() {
             Retour à l'accueil
           </button>
         </div>
+
+        {/* SUPR Footer */}
+        <div className="text-center pt-4">
+          <a 
+            href="https://suprclimbing.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-sm text-gray-500 hover:text-supr-orange transition-colors"
+          >
+            Propulsé par <span className="font-bold">SUPR Climbing</span>
+          </a>
+        </div>
       </div>
     </div>
   )
