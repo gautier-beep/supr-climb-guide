@@ -31,11 +31,40 @@ export default function SharePage() {
   const gymSlug = params.gym_slug as string
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
 
-  const handleShare = (templateId: string) => {
+  const handleShare = async (templateId: string) => {
     // Track share event
-    // In production, this would generate an actual image and open Instagram
-    alert('Fonctionnalité bientôt disponible ! 📸\n\nL\'app générera une belle story avec le logo de ta salle et tu pourras la partager directement sur Instagram.')
+    if (gym) {
+      await supabase.from('analytics_events').insert({
+        gym_id: gym.id,
+        event_type: 'instagram_share',
+        session_id: Math.random().toString(36).substring(7)
+      })
+    }
+
+    // Generate story URL using a template service
+    const template = templates.find(t => t.id === templateId)
+    if (!template) return
+
+    const storyUrl = `https://api.placid.app/u/YOUR_TEMPLATE_ID?title=${encodeURIComponent(template.title)}&gym=${encodeURIComponent(gym?.name || '')}`
+    
+    // For V1, we show instructions
+    alert(`📸 Partage Instagram\n\n1. Fais une capture d'écran de ta session\n2. Ouvre Instagram Stories\n3. Ajoute ton emoji "${template.emoji}"\n4. Mentionne @${gym?.instagram_handle}\n5. Hashtag #SUPRClimbing\n\n✨ Génération automatique disponible en v1.1 !`)
   }
+
+  const [gym, setGym] = useState<any>(null)
+
+  useEffect(() => {
+    async function loadGym() {
+      const { data } = await supabase
+        .from('gyms')
+        .select('*')
+        .eq('slug', gymSlug)
+        .single()
+      
+      setGym(data)
+    }
+    loadGym()
+  }, [gymSlug])
 
   return (
     <div className="min-h-screen bg-gray-50">
