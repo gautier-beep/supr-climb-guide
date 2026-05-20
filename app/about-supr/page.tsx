@@ -1,5 +1,4 @@
-'use client'
-
+"use client"
 import { useRouter } from 'next/navigation'
 import { ArrowLeft, Rocket, Target, Users, TrendingUp, Mail } from 'lucide-react'
 
