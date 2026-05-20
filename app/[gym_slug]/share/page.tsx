@@ -1,7 +1,4 @@
 'use client'
-import { useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
-
 
 import { useParams, useRouter } from 'next/navigation'
 import { ArrowLeft, Camera, Share2 } from 'lucide-react'
