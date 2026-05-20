@@ -6,12 +6,18 @@
 
 :root {
   --primary-color: #FF6B35;
+  --bg: #000000;
+  --surface: #141414;
+  --surface-elevated: #1c1c1c;
+  --border: #2a2a2a;
+  --text: #ffffff;
+  --text-muted: #a3a3a3;
 }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #FFFFFF;
-  color: #2C2C2C;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 @layer utilities {

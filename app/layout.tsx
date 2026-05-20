@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'SUPR Climb Guide',
   description: 'Your climbing companion for beginners',
   manifest: '/manifest.json',
-  themeColor: '#FF6B35',
+  themeColor: '#000000',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover',
 }
 
@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className="pb-16 md:pb-0">
+      <body className="bg-black text-white pb-16 md:pb-0">
         {children}
         <BottomNav />
       </body>

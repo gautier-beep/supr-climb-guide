@@ -9,7 +9,10 @@ module.exports = {
     extend: {
       colors: {
         'supr-orange': '#FF6B35',
-        'supr-dark': '#2C2C2C',
+        'supr-dark': '#1C1C1C',
+        'supr-black': '#000000',
+        'supr-surface': '#141414',
+        'supr-border': '#2a2a2a',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
