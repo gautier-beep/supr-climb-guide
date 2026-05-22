@@ -1,4 +1,5 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import { Suspense } from 'react'
 import './globals.css'
 import BottomNav from '@/components/BottomNav'
 
@@ -6,8 +7,14 @@ export const metadata: Metadata = {
   title: 'SUPR Climb Guide',
   description: 'Your climbing companion for beginners',
   manifest: '/manifest.json',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover',
   themeColor: '#000000',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover',
 }
 
 export default function RootLayout({
@@ -19,7 +26,9 @@ export default function RootLayout({
     <html lang="fr">
       <body className="bg-black text-white pb-16 md:pb-0">
         {children}
-        <BottomNav />
+        <Suspense fallback={null}>
+          <BottomNav />
+        </Suspense>
       </body>
     </html>
   )

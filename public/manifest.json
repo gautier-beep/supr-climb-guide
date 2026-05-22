@@ -1,0 +1,10 @@
+{
+  "name": "SUPR Climb Guide",
+  "short_name": "SUPR",
+  "description": "Ton compagnon pour apprendre à grimper en salle",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": []
+}

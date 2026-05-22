@@ -1,11 +1,12 @@
 'use client'
 
-import { useParams, usePathname, useRouter } from 'next/navigation'
-import { Home, GraduationCap, MapPin, Share2, ShoppingBag } from 'lucide-react'
+import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { Home, GraduationCap, MapPin, Share2 } from 'lucide-react'
 
 export default function BottomNav() {
   const params = useParams()
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const router = useRouter()
   const gymSlug = params.gym_slug as string
 
@@ -22,21 +23,13 @@ export default function BottomNav() {
       icon: Home,
       label: 'Accueil',
       href: `/${gymSlug}`,
-      active: isGymHome,
+      active: isGymHome && searchParams.get('tab') !== 'boutique',
     },
     {
       icon: GraduationCap,
       label: 'Apprendre',
       href: `/${gymSlug}/learn`,
       active: pathname?.includes('/learn'),
-    },
-    {
-      icon: ShoppingBag,
-      label: 'Boutique',
-      href: `/${gymSlug}?tab=boutique`,
-      active: isGymHome && typeof window !== 'undefined'
-        ? new URLSearchParams(window.location.search).get('tab') === 'boutique'
-        : false,
     },
     {
       icon: MapPin,
@@ -54,7 +47,7 @@ export default function BottomNav() {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-black border-t border-supr-border safe-area-bottom z-50 md:hidden">
-      <div className="grid grid-cols-5 h-16">
+      <div className="grid grid-cols-4 h-16">
         {navItems.map((item) => {
           const Icon = item.icon
           return (
@@ -68,7 +61,7 @@ export default function BottomNav() {
               }`}
             >
               <Icon className={`w-5 h-5 ${item.active ? 'scale-110' : ''}`} />
-              <span className="text-[10px] font-medium">{item.label}</span>
+              <span className="text-xs font-medium">{item.label}</span>
             </button>
           )
         })}
