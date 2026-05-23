@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
+import Link from 'next/link'
 import { supabase, Gym } from '@/lib/supabase'
 import { BarChart3, Users, ShoppingBag, Share2, Eye, Lock } from 'lucide-react'
 
@@ -88,31 +89,37 @@ export default function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8">
+      <div className="min-h-screen bg-black flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-supr-surface border border-supr-border rounded-2xl p-8">
           <div className="w-16 h-16 bg-supr-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
             <Lock className="w-8 h-8 text-supr-orange" />
           </div>
-          <h1 className="text-2xl font-bold text-center mb-2">Dashboard Admin</h1>
-          <p className="text-center text-gray-600 mb-6">{gym?.name}</p>
-          
+          <h1 className="text-2xl font-bold text-center text-white mb-2">Dashboard Admin</h1>
+          <p className="text-center text-gray-400 mb-6">{gym?.name}</p>
+
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="admin-password"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
                 Mot de passe
               </label>
               <input
+                id="admin-password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-supr-orange focus:border-transparent"
+                autoComplete="current-password"
+                autoFocus
+                className="w-full px-4 py-3 bg-black border border-supr-border rounded-xl text-white placeholder-gray-600 focus:border-supr-orange focus:ring-2 focus:ring-supr-orange/30 outline-none"
                 placeholder="Entrez le mot de passe"
               />
               {error && (
-                <p className="mt-2 text-sm text-red-600">{error}</p>
+                <p className="mt-2 text-sm text-red-400">{error}</p>
               )}
             </div>
-            
+
             <button
               type="submit"
               className="w-full bg-supr-orange text-white font-semibold py-3 rounded-xl hover:bg-orange-600 transition-colors"
@@ -122,8 +129,20 @@ export default function AdminPage() {
           </form>
 
           <p className="mt-6 text-center text-xs text-gray-500">
-            Mot de passe fourni par SUPR lors de l'installation
+            Mot de passe fourni par SUPR lors de l&apos;installation
           </p>
+
+          <div className="mt-4 flex flex-col items-center gap-2 text-sm">
+            <Link href="/" className="text-gray-400 hover:text-supr-orange transition-colors">
+              ← Accueil SUPR
+            </Link>
+            <Link
+              href={`/${gymSlug}`}
+              className="text-gray-400 hover:text-supr-orange transition-colors"
+            >
+              Accueil {gym?.name ?? 'salle'}
+            </Link>
+          </div>
         </div>
       </div>
     )

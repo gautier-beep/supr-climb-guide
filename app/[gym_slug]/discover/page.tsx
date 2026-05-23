@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Mountain, Calendar, Users } from 'lucide-react'
+import { Mountain, Calendar, Users } from 'lucide-react'
 
 export default function DiscoverPage() {
   const params = useParams()
@@ -11,15 +11,9 @@ export default function DiscoverPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white shadow-sm sticky top-0 z-10">
-        <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-4">
-          <button
-            onClick={() => router.push(`/${gymSlug}`)}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-          >
-            <ArrowLeft className="w-6 h-6" />
-          </button>
-          <h1 className="text-xl font-bold">Découvrir l'escalade</h1>
+      <div className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-2xl mx-auto px-4 py-4">
+          <h1 className="text-xl font-bold">Découvrir l&apos;escalade</h1>
         </div>
       </div>
 

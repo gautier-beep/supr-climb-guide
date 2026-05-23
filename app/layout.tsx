@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next'
 import { Suspense } from 'react'
 import './globals.css'
 import BottomNav from '@/components/BottomNav'
+import PageNavArrows from '@/components/PageNavArrows'
+import SiteLinksFooter from '@/components/SiteLinksFooter'
 
 export const metadata: Metadata = {
   title: 'SUPR Climb Guide',
@@ -24,8 +26,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className="bg-black text-white pb-16 md:pb-0">
-        {children}
+      <body className="bg-black text-white min-h-screen flex flex-col">
+        <main className="flex-1 w-full">
+          <Suspense fallback={null}>
+            <PageNavArrows />
+          </Suspense>
+          {children}
+        </main>
+        <Suspense fallback={null}>
+          <SiteLinksFooter />
+        </Suspense>
         <Suspense fallback={null}>
           <BottomNav />
         </Suspense>

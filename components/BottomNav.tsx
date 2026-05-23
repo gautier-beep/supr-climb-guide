@@ -2,6 +2,7 @@
 
 import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Home, GraduationCap, MapPin, Share2 } from 'lucide-react'
+import { isV1FlowPath } from '@/lib/flow-routes'
 
 export default function BottomNav() {
   const params = useParams()
@@ -12,18 +13,22 @@ export default function BottomNav() {
 
   if (!gymSlug) return null
 
-  if (pathname?.includes('/admin') || pathname?.includes('/qr-code')) {
+  if (
+    pathname?.includes('/admin') ||
+    pathname?.includes('/qr-code') ||
+    isV1FlowPath(pathname)
+  ) {
     return null
   }
 
-  const isGymHome = pathname === `/${gymSlug}`
+  const isGymHome = pathname === `/${gymSlug}` || pathname === `/${gymSlug}/hub`
 
   const navItems = [
     {
       icon: Home,
       label: 'Accueil',
-      href: `/${gymSlug}`,
-      active: isGymHome && searchParams.get('tab') !== 'boutique',
+      href: `/${gymSlug}/hub`,
+      active: isGymHome,
     },
     {
       icon: GraduationCap,

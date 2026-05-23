@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Camera, Share2 } from 'lucide-react'
+import { Camera, Share2 } from 'lucide-react'
 import { supabase, Gym } from '@/lib/supabase'
 
 const templates = [
@@ -80,14 +80,8 @@ export default function SharePage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <div className="border-b border-supr-border sticky top-0 z-10 bg-black">
-        <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-4">
-          <button
-            onClick={() => router.push(`/${gymSlug}`)}
-            className="p-2 hover:bg-supr-surface rounded-lg transition-colors text-white"
-          >
-            <ArrowLeft className="w-6 h-6" />
-          </button>
+      <div className="border-b border-supr-border bg-black">
+        <div className="max-w-2xl mx-auto px-4 py-4">
           <h1 className="text-xl font-bold text-white">Partager ma session</h1>
         </div>
       </div>

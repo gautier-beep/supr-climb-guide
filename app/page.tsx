@@ -222,9 +222,6 @@ export default function SuprHomePage() {
             )}
           </section>
 
-          <footer className="text-center text-gray-500 text-xs pb-4">
-            <p>© 2026 SUP&apos;R Climbing. Tous droits réservés.</p>
-          </footer>
         </div>
       </div>
     </div>

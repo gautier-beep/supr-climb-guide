@@ -36,7 +36,7 @@ export default function QRCodePage() {
 
   const downloadQRCode = () => {
     // For V1, we'll use a QR code API service
-    const url = `https://supr-climb-guide-supr2.vercel.app/${gymSlug}/beginner-wall`
+    const url = `${window.location.origin}/${gymSlug}`
     const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${encodeURIComponent(url)}`
     
     // Create download link
@@ -56,7 +56,10 @@ export default function QRCodePage() {
     )
   }
 
-  const appUrl = `https://supr-climb-guide-supr2.vercel.app/${gymSlug}/beginner-wall`
+  const appUrl =
+    typeof window !== 'undefined'
+      ? `${window.location.origin}/${gymSlug}`
+      : `https://supr-climb-guide-fe1ignf2t-supr2.vercel.app/${gymSlug}`
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(appUrl)}`
 
   return (
