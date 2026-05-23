@@ -14,21 +14,24 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 import { beginnerWallSteps, beginnerWallTips } from '@/lib/supr-content'
+import { images, tutorialThumbnails } from '@/lib/visual-assets'
+import CoverImage from '@/components/CoverImage'
+import SafeImage from '@/components/SafeImage'
 
 const tutorials = {
   basics: [
-    { title: 'Tes premiers pas en salle', duration: '3:00', video: 'https://player.vimeo.com/video/placeholder1' },
-    { title: 'Position des pieds', duration: '2:30', video: 'https://player.vimeo.com/video/placeholder2' },
-    { title: 'Économiser son énergie', duration: '3:15', video: 'https://player.vimeo.com/video/placeholder3' },
-    { title: 'Comprendre les couleurs et grades', duration: '2:00', video: 'https://player.vimeo.com/video/placeholder4' },
-    { title: 'Tomber en sécurité', duration: '2:45', video: 'https://player.vimeo.com/video/placeholder5' },
+    { title: 'Tes premiers pas en salle', duration: '3:00', video: 'https://player.vimeo.com/video/placeholder1', thumb: tutorialThumbnails.basics[0] },
+    { title: 'Position des pieds', duration: '2:30', video: 'https://player.vimeo.com/video/placeholder2', thumb: tutorialThumbnails.basics[1] },
+    { title: 'Économiser son énergie', duration: '3:15', video: 'https://player.vimeo.com/video/placeholder3', thumb: tutorialThumbnails.basics[2] },
+    { title: 'Comprendre les couleurs et grades', duration: '2:00', video: 'https://player.vimeo.com/video/placeholder4', thumb: tutorialThumbnails.basics[3] },
+    { title: 'Tomber en sécurité', duration: '2:45', video: 'https://player.vimeo.com/video/placeholder5', thumb: tutorialThumbnails.basics[4] },
   ],
   techniques: [
-    { title: 'Placement des mains', duration: '3:00', video: 'https://player.vimeo.com/video/placeholder6' },
-    { title: 'Lecture de voie', duration: '3:30', video: 'https://player.vimeo.com/video/placeholder7' },
-    { title: 'Adhérence et smearing', duration: '2:20', video: 'https://player.vimeo.com/video/placeholder8' },
-    { title: 'Équilibre et centre de gravité', duration: '3:00', video: 'https://player.vimeo.com/video/placeholder9' },
-    { title: 'Grimper en douceur', duration: '2:50', video: 'https://player.vimeo.com/video/placeholder10' },
+    { title: 'Placement des mains', duration: '3:00', video: 'https://player.vimeo.com/video/placeholder6', thumb: tutorialThumbnails.techniques[0] },
+    { title: 'Lecture de voie', duration: '3:30', video: 'https://player.vimeo.com/video/placeholder7', thumb: tutorialThumbnails.techniques[1] },
+    { title: 'Adhérence et smearing', duration: '2:20', video: 'https://player.vimeo.com/video/placeholder8', thumb: tutorialThumbnails.techniques[2] },
+    { title: 'Équilibre et centre de gravité', duration: '3:00', video: 'https://player.vimeo.com/video/placeholder9', thumb: tutorialThumbnails.techniques[3] },
+    { title: 'Grimper en douceur', duration: '2:50', video: 'https://player.vimeo.com/video/placeholder10', thumb: tutorialThumbnails.techniques[4] },
   ],
 }
 
@@ -100,6 +103,8 @@ export default function LearnPage() {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-8">
+        <CoverImage src={images.learn} alt="Mur débutant" height="sm" className="mb-4" />
+
         <section className="bg-gradient-to-br from-supr-orange/30 to-orange-600/10 border border-supr-orange/40 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-3">
             <Mountain className="w-8 h-8 text-supr-orange" />
@@ -192,13 +197,21 @@ export default function LearnPage() {
               <button
                 key={index}
                 onClick={() => setSelectedVideo(tutorial.video)}
-                className="w-full bg-supr-surface border border-supr-border rounded-xl hover:border-supr-orange/40 transition-all p-4 text-left group"
+                className="w-full bg-supr-surface border border-supr-border rounded-xl hover:border-supr-orange/40 transition-all overflow-hidden text-left group"
               >
-                <div className="flex items-center gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-supr-orange/10 flex items-center justify-center group-hover:bg-supr-orange/20 transition-colors">
-                    <Play className="w-6 h-6 text-supr-orange" />
+                <div className="flex items-center gap-0">
+                  <div className="relative w-20 h-20 flex-shrink-0">
+                    <SafeImage
+                      src={tutorial.thumb}
+                      alt=""
+                      fallbackClassName="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-supr-orange/30 to-zinc-900"
+                      iconClassName="w-6 h-6 text-supr-orange/40"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center pointer-events-none">
+                      <Play className="w-8 h-8 text-white opacity-90" />
+                    </div>
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 p-4">
                     <h3 className="font-semibold text-white mb-1">{tutorial.title}</h3>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
                       <Clock className="w-4 h-4" />
@@ -221,13 +234,21 @@ export default function LearnPage() {
               <button
                 key={index}
                 onClick={() => setSelectedVideo(tutorial.video)}
-                className="w-full bg-supr-surface border border-supr-border rounded-xl hover:border-blue-500/40 transition-all p-4 text-left group"
+                className="w-full bg-supr-surface border border-supr-border rounded-xl hover:border-blue-500/40 transition-all overflow-hidden text-left group"
               >
-                <div className="flex items-center gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-                    <Play className="w-6 h-6 text-blue-400" />
+                <div className="flex items-center gap-0">
+                  <div className="relative w-20 h-20 flex-shrink-0">
+                    <SafeImage
+                      src={tutorial.thumb}
+                      alt=""
+                      fallbackClassName="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-supr-orange/30 to-zinc-900"
+                      iconClassName="w-6 h-6 text-supr-orange/40"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center pointer-events-none">
+                      <Play className="w-8 h-8 text-white opacity-90" />
+                    </div>
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 p-4">
                     <h3 className="font-semibold text-white mb-1">{tutorial.title}</h3>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
                       <Clock className="w-4 h-4" />

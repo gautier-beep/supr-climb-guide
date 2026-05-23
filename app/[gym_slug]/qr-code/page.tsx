@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { supabase, Gym } from '@/lib/supabase'
 import { Download, QrCode } from 'lucide-react'
+import SafeImage from '@/components/SafeImage'
 
 export default function QRCodePage() {
   const params = useParams()
@@ -72,11 +73,13 @@ export default function QRCodePage() {
           </div>
 
           {/* QR Code Display */}
-          <div className="bg-white border-4 border-gray-200 rounded-2xl p-8 mb-6">
-            <img 
-              src={qrCodeUrl} 
+          <div className="bg-white border-4 border-gray-200 rounded-2xl p-8 mb-6 relative min-h-[200px]">
+            <SafeImage
+              src={qrCodeUrl}
               alt={`QR Code ${gym.name}`}
-              className="w-full max-w-md mx-auto"
+              className="w-full max-w-md mx-auto relative object-contain"
+              fallbackClassName="flex items-center justify-center min-h-[200px] bg-gray-100 rounded-xl"
+              iconClassName="w-16 h-16 text-gray-400"
             />
           </div>
 

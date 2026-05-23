@@ -13,6 +13,9 @@ import {
   Rocket,
 } from 'lucide-react'
 import { suprPillars, suprServices, suprStats, SUPR_SITE_URL } from '@/lib/supr-content'
+import { images } from '@/lib/visual-assets'
+import CoverImage from '@/components/CoverImage'
+import SuprLogo from '@/components/SuprLogo'
 
 const serviceIcons = {
   groupe: Users,
@@ -37,19 +40,20 @@ export default function AboutSUPRPage() {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-6 space-y-8">
-        <div className="text-center py-4">
-          <img
-            src="/supr-logo.png"
-            alt="SUPR"
-            className="mx-auto mb-6 h-14 w-auto object-contain"
-          />
-          <h2 className="text-3xl font-black text-white mb-2">Level Up.</h2>
-          <p className="text-gray-400">More than holds. A mindset.</p>
-          <p className="text-xs text-supr-orange mt-3 uppercase tracking-wider">
-            Official World Climbing products supplier
-          </p>
+      <div className="max-w-2xl mx-auto space-y-8">
+        <div className="relative">
+          <CoverImage src={images.worldCup} alt="Compétition escalade" height="lg" className="rounded-none" />
+          <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 px-4">
+            <SuprLogo className="max-h-12 mb-3" boxClassName="h-12 mx-auto" />
+            <h2 className="text-3xl font-black text-white mb-1">Level Up.</h2>
+            <p className="text-gray-300 text-sm">More than holds. A mindset.</p>
+            <p className="text-[10px] text-supr-orange mt-2 uppercase tracking-wider font-semibold">
+              Official World Climbing products supplier
+            </p>
+          </div>
         </div>
+
+        <div className="px-4 space-y-8">
 
         <div className="grid grid-cols-3 gap-3">
           <div className="bg-supr-surface border border-supr-border rounded-xl p-4 text-center">
@@ -168,6 +172,7 @@ export default function AboutSUPRPage() {
           <Link href="/" className="text-sm text-gray-500 hover:text-supr-orange transition-colors">
             ← Retour à l&apos;accueil
           </Link>
+        </div>
         </div>
       </div>
     </div>

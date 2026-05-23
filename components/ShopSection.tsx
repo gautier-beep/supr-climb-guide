@@ -1,7 +1,8 @@
 'use client'
 
-import { ShoppingBag } from 'lucide-react'
+import { Package, ShoppingBag } from 'lucide-react'
 import { supabase, Gym, ShopItem } from '@/lib/supabase'
+import SafeImage from './SafeImage'
 
 interface ShopSectionProps {
   gym: Gym
@@ -29,13 +30,21 @@ export default function ShopSection({ gym, shopItems }: ShopSectionProps) {
       <div className="grid grid-cols-2 gap-4">
         {shopItems.map((item) => (
           <div key={item.id} className="bg-supr-surface border border-supr-border rounded-xl overflow-hidden">
-            {item.image_url && (
-              <img
-                src={item.image_url}
-                alt={item.name}
-                className="w-full h-32 object-cover"
-              />
-            )}
+            <div className="relative h-32 bg-zinc-900">
+              {item.image_url ? (
+                <SafeImage
+                  src={item.image_url}
+                  alt={item.name}
+                  className="w-full h-32 object-cover"
+                  fallbackClassName="w-full h-32 flex items-center justify-center bg-gradient-to-br from-zinc-800 to-black"
+                  iconClassName="w-8 h-8 text-gray-600"
+                />
+              ) : (
+                <div className="w-full h-32 flex items-center justify-center bg-gradient-to-br from-supr-orange/20 to-black">
+                  <Package className="w-10 h-10 text-supr-orange/40" />
+                </div>
+              )}
+            </div>
             <div className="p-3">
               <h3 className="font-semibold text-white text-sm mb-1">{item.name}</h3>
               <div className="flex items-center justify-between">

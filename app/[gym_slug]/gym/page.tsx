@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { supabase, Gym } from '@/lib/supabase'
 import { ArrowLeft, MapPin, Clock, Instagram } from 'lucide-react'
+import GymLogo from '@/components/GymLogo'
 
 export default function GymPage() {
   const params = useParams()
@@ -57,11 +58,15 @@ export default function GymPage() {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-8">
-        {gym.logo_url && (
-          <div className="bg-supr-surface border border-supr-border rounded-2xl p-8 text-center">
-            <img src={gym.logo_url} alt={gym.name} className="h-32 mx-auto object-contain" />
-          </div>
-        )}
+        <div className="bg-supr-surface border border-supr-border rounded-2xl p-8 flex justify-center">
+          <GymLogo
+            slug={gymSlug}
+            name={gym.name}
+            logoUrl={gym.logo_url}
+            primaryColor={gym.primary_color}
+            size="lg"
+          />
+        </div>
 
         <section className="bg-supr-surface border border-supr-border rounded-2xl p-6">
           <h2 className="text-2xl font-bold text-white mb-6">Informations pratiques</h2>

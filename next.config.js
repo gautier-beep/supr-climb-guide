@@ -8,6 +8,13 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config, { dev }) => {
+    // Évite les erreurs ENOENT du cache webpack en dev
+    if (dev) {
+      config.cache = false
+    }
+    return config
+  },
 }
 
 module.exports = nextConfig

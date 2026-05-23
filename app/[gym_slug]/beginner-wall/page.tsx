@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation'
 import { supabase, Gym } from '@/lib/supabase'
 import { ArrowLeft, QrCode, CheckCircle2 } from 'lucide-react'
 import { beginnerWallSteps, beginnerWallTips } from '@/lib/supr-content'
+import GymCover from '@/components/GymCover'
+import GymLogo from '@/components/GymLogo'
 
 export default function BeginnerWallPage() {
   const params = useParams()
@@ -64,17 +66,27 @@ export default function BeginnerWallPage() {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
-        {gym.logo_url && (
-          <div className="flex justify-center py-2">
-            <img src={gym.logo_url} alt={gym.name} className="h-12 object-contain" />
+        <div className="relative h-28 rounded-2xl overflow-hidden">
+          <GymCover name={gym.name} color={gym.primary_color || '#FF6B35'} />
+        </div>
+        <div className="flex items-center justify-center gap-3 -mt-2">
+          <GymLogo
+            slug={gymSlug}
+            name={gym.name}
+            logoUrl={gym.logo_url}
+            primaryColor={gym.primary_color}
+            size="md"
+          />
+          <div>
+            <h2 className="text-lg font-black text-white">Mur débutant SUP&apos;R</h2>
+            <p className="text-gray-400 text-xs">{gym.name}</p>
           </div>
-        )}
+        </div>
 
         <div className="bg-gradient-to-br from-supr-orange to-orange-600 rounded-2xl p-6 text-white text-center">
           <QrCode className="w-12 h-12 mx-auto mb-3 opacity-90" />
-          <h2 className="text-2xl font-black mb-2">Bienvenue sur le mur débutant</h2>
           <p className="text-orange-100 text-sm">
-            {gym.name} × SUP&apos;R — prises conçues pour débuter et progresser
+            Scanne le QR sur le mur pour suivre ta progression
           </p>
         </div>
 

@@ -5,6 +5,10 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { supabase, Gym, ShopItem } from '@/lib/supabase'
 import { GraduationCap, MapPin, Mountain, Share2, ShoppingBag } from 'lucide-react'
 import ShopSection from '@/components/ShopSection'
+import CoverImage from '@/components/CoverImage'
+import GymLogo from '@/components/GymLogo'
+import { images } from '@/lib/visual-assets'
+import GymCover from '@/components/GymCover'
 
 type Tab = 'accueil' | 'boutique'
 
@@ -130,22 +134,24 @@ function GymHomeContent() {
 
   return (
     <div className="min-h-screen bg-black">
-      <div className="border-b border-supr-border">
-        <div className="max-w-2xl mx-auto px-4 py-8 text-center">
-          {gym.logo_url && (
-            <img
-              src={gym.logo_url}
-              alt={gym.name}
-              className="h-20 mx-auto mb-4 object-contain"
-            />
-          )}
-          <h1 className="text-3xl font-bold text-white mb-2">
+      <div className="relative max-w-2xl mx-auto h-44">
+        <GymCover name={gym.name} color={gym.primary_color || '#FF6B35'} />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 px-4">
+          <GymLogo
+            slug={gymSlug}
+            name={gym.name}
+            logoUrl={gym.logo_url}
+            primaryColor={gym.primary_color}
+            size="lg"
+          />
+          <h1 className="text-2xl font-bold text-white mt-3 mb-1 text-center">
             Bienvenue chez {gym.name} !
           </h1>
-          <p className="text-lg text-gray-400 mb-4">{gym.welcome_message}</p>
+          <p className="text-sm text-gray-300 text-center mb-2">{gym.welcome_message}</p>
           <button
             onClick={() => router.push('/')}
-            className="text-sm text-gray-500 hover:text-supr-orange transition-colors"
+            className="text-xs text-gray-400 hover:text-supr-orange transition-colors"
           >
             ← Toutes les salles SUPR
           </button>
@@ -208,6 +214,9 @@ function GymHomeContent() {
           </div>
         ) : (
           <div className="py-6">
+            <div className="relative h-28 rounded-2xl overflow-hidden mb-4">
+              <GymCover name={gym.name} color={gym.primary_color || '#FF6B35'} />
+            </div>
             <div className="flex items-center gap-3 mb-6">
               <ShoppingBag className="w-6 h-6 text-supr-orange" />
               <h2 className="text-2xl font-bold text-white">Boutique {gym.name}</h2>
