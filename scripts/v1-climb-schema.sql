@@ -2,6 +2,7 @@
 -- sessions, routes_progress, badges, leaderboard_weekly
 
 -- sessions (colonnes attendues par l'app)
+-- circuit_completed : NULL au départ (CHECK interdit 0 — min 1 ou NULL)
 -- id, gym_slug, user_name, user_level, expires_at,
 -- points_earned, circuit_completed, routes_completed, routes_total,
 -- total_duration, perfect_run, completed_at, shared_social, created_at

@@ -49,6 +49,16 @@ Après déploiement Vercel (2-3 min) :
 - https://[ton-url].vercel.app/boulder-space
 - https://[ton-url].vercel.app/bloc-en-stock/beginner-wall
 - https://[ton-url].vercel.app/bloc-en-stock/admin (password: `supr2026`)
+
+### Sessions grimpeur (RLS Supabase)
+
+Si le profil affiche « Impossible de créer la session », exécute dans **Supabase → SQL Editor** le fichier :
+
+`scripts/setup-sessions-rls.sql`
+
+Cela autorise les inserts anonymes sur `sessions`, `routes_progress` et `badges` (PoC V1).
+
+Sans ce script, l’app utilise un **mode local** (localStorage) : le parcours fonctionne, mais le classement global reste vide.
 - https://[ton-url].vercel.app/about-supr
 
 ## 🎯 NOUVEAUTÉS V1.0

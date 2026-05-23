@@ -6,6 +6,16 @@ import {
   SessionBadge,
 } from '@/lib/climb-types'
 import { CIRCUITS } from '@/lib/circuits'
+import {
+  addLocalBadge,
+  clearLocalSession,
+  createLocalSession,
+  isLocalSessionId,
+  loadLocalBadges,
+  loadLocalSession,
+  recordLocalRoute,
+  saveLocalSession,
+} from '@/lib/local-session'
 
 const supabase = createClient()
 
@@ -29,6 +39,7 @@ export function setStoredSessionId(id: string) {
 export function clearStoredSessionId() {
   localStorage.removeItem(SESSION_STORAGE_KEY)
   localStorage.removeItem(CIRCUIT_TIMER_KEY)
+  clearLocalSession()
 }
 
 export function startCircuitTimer() {
@@ -47,7 +58,7 @@ export function resetCircuitTimer() {
   localStorage.removeItem(CIRCUIT_TIMER_KEY)
 }
 
-export async function fetchSession(sessionId: string): Promise<ClimbSession | null> {
+async function fetchSessionFromDb(sessionId: string): Promise<ClimbSession | null> {
   const { data, error } = await supabase
     .from('sessions')
     .select('*')
@@ -65,11 +76,25 @@ export async function fetchSession(sessionId: string): Promise<ClimbSession | nu
   return data as ClimbSession
 }
 
+export async function fetchSession(sessionId: string): Promise<ClimbSession | null> {
+  if (isLocalSessionId(sessionId)) {
+    const local = loadLocalSession()
+    return local?.id === sessionId ? local : null
+  }
+  return fetchSessionFromDb(sessionId)
+}
+
+export type CreateSessionResult = {
+  session: ClimbSession | null
+  usedLocalFallback: boolean
+  dbError?: string
+}
+
 export async function createSession(
   gymSlug: string,
   userName: string,
   userLevel: string
-): Promise<ClimbSession | null> {
+): Promise<CreateSessionResult> {
   const expiresAt = new Date()
   expiresAt.setDate(expiresAt.getDate() + 10)
 
@@ -81,7 +106,7 @@ export async function createSession(
       user_level: userLevel,
       expires_at: expiresAt.toISOString(),
       points_earned: 0,
-      circuit_completed: 0,
+      circuit_completed: null,
       routes_completed: 0,
       routes_total: 0,
       total_duration: 0,
@@ -91,34 +116,70 @@ export async function createSession(
     .select()
     .single()
 
-  if (error || !data) {
-    console.error('createSession', error)
-    return null
+  if (!error && data) {
+    const session = data as ClimbSession
+    setStoredSessionId(session.id)
+    saveLocalSession(session)
+    return { session, usedLocalFallback: false }
   }
 
-  setStoredSessionId(data.id)
+  console.error('createSession DB error:', error?.message, error?.code)
+
+  const local = createLocalSession(gymSlug, userName, userLevel)
+  saveLocalSession(local)
+  setStoredSessionId(local.id)
+
+  return {
+    session: local,
+    usedLocalFallback: true,
+    dbError: error?.message,
+  }
+}
+
+async function updateSessionFields(
+  sessionId: string,
+  fields: Partial<ClimbSession>
+): Promise<ClimbSession | null> {
+  if (isLocalSessionId(sessionId)) {
+    const local = loadLocalSession()
+    if (!local || local.id !== sessionId) return null
+    const updated = { ...local, ...fields }
+    saveLocalSession(updated)
+    return updated
+  }
+
+  const { data, error } = await supabase
+    .from('sessions')
+    .update(fields)
+    .eq('id', sessionId)
+    .select()
+    .single()
+
+  if (error) {
+    console.error('updateSessionFields', error)
+    return null
+  }
   return data as ClimbSession
 }
 
 export async function addPoints(sessionId: string, amount: number) {
   const session = await fetchSession(sessionId)
-  if (!session) return
-
-  const { data, error } = await supabase
-    .from('sessions')
-    .update({ points_earned: (session.points_earned || 0) + amount })
-    .eq('id', sessionId)
-    .select()
-    .single()
-
-  if (error) console.error('addPoints', error)
-  return data as ClimbSession | null
+  if (!session) return null
+  return updateSessionFields(sessionId, {
+    points_earned: (session.points_earned || 0) + amount,
+  })
 }
 
 export async function unlockBadge(
   sessionId: string,
   badgeType: string
 ): Promise<SessionBadge | null> {
+  if (isLocalSessionId(sessionId)) {
+    const badge = addLocalBadge(sessionId, badgeType)
+    if (badge) await addPoints(sessionId, POINTS.badge)
+    return badge
+  }
+
   const { data: existing } = await supabase
     .from('badges')
     .select('id')
@@ -136,7 +197,7 @@ export async function unlockBadge(
 
   if (error) {
     console.error('unlockBadge', error)
-    return null
+    return addLocalBadge(sessionId, badgeType)
   }
 
   await addPoints(sessionId, POINTS.badge)
@@ -150,6 +211,18 @@ export async function recordRouteProgress(
   completed: boolean,
   skipped: boolean
 ) {
+  if (isLocalSessionId(sessionId)) {
+    recordLocalRoute(sessionId, circuitNumber, routeNumber, completed, skipped)
+    if (completed) await addPoints(sessionId, POINTS.route)
+    if (skipped) {
+      const session = await fetchSession(sessionId)
+      if (session?.perfect_run) {
+        await updateSessionFields(sessionId, { perfect_run: false })
+      }
+    }
+    return
+  }
+
   await supabase.from('routes_progress').insert({
     session_id: sessionId,
     circuit_number: circuitNumber,
@@ -158,17 +231,12 @@ export async function recordRouteProgress(
     skipped,
   })
 
-  if (completed) {
-    await addPoints(sessionId, POINTS.route)
-  }
+  if (completed) await addPoints(sessionId, POINTS.route)
 
   if (skipped) {
     const session = await fetchSession(sessionId)
     if (session?.perfect_run) {
-      await supabase
-        .from('sessions')
-        .update({ perfect_run: false })
-        .eq('id', sessionId)
+      await updateSessionFields(sessionId, { perfect_run: false })
     }
   }
 }
@@ -188,30 +256,17 @@ export async function completeCircuit(
 
   let points = session.points_earned + POINTS.circuit
   const perfectRun = !stats.hadSkips
+  if (perfectRun) points += POINTS.perfect
 
-  if (perfectRun) {
-    points += POINTS.perfect
-  }
-
-  const { data, error } = await supabase
-    .from('sessions')
-    .update({
-      circuit_completed: Math.max(session.circuit_completed || 0, circuitNumber),
-      routes_completed: stats.routesCompleted,
-      routes_total: stats.routesTotal,
-      total_duration: stats.durationSeconds,
-      perfect_run: perfectRun,
-      points_earned: points,
-      completed_at: new Date().toISOString(),
-    })
-    .eq('id', sessionId)
-    .select()
-    .single()
-
-  if (error) {
-    console.error('completeCircuit', error)
-    return null
-  }
+  const updated = await updateSessionFields(sessionId, {
+    circuit_completed: Math.max(session.circuit_completed || 0, circuitNumber),
+    routes_completed: stats.routesCompleted,
+    routes_total: stats.routesTotal,
+    total_duration: stats.durationSeconds,
+    perfect_run: perfectRun,
+    points_earned: points,
+    completed_at: new Date().toISOString(),
+  })
 
   const badges: string[] = []
   if (circuitNumber === 1) badges.push('first_circuit')
@@ -224,28 +279,24 @@ export async function completeCircuit(
     await unlockBadge(sessionId, b)
   }
 
-  return data as ClimbSession
+  return updated
 }
 
 export async function markSocialShared(sessionId: string) {
   const session = await fetchSession(sessionId)
   if (!session || session.shared_social) return session
 
-  const { data, error } = await supabase
-    .from('sessions')
-    .update({
-      shared_social: true,
-      points_earned: (session.points_earned || 0) + POINTS.social,
-    })
-    .eq('id', sessionId)
-    .select()
-    .single()
-
-  if (error) console.error('markSocialShared', error)
-  return data as ClimbSession | null
+  return updateSessionFields(sessionId, {
+    shared_social: true,
+    points_earned: (session.points_earned || 0) + POINTS.social,
+  })
 }
 
 export async function fetchSessionBadges(sessionId: string): Promise<SessionBadge[]> {
+  if (isLocalSessionId(sessionId)) {
+    return loadLocalBadges(sessionId)
+  }
+
   const { data } = await supabase
     .from('badges')
     .select('*')

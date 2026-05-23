@@ -7,7 +7,7 @@ export interface ClimbSession {
   user_level: UserLevel | string
   expires_at: string
   points_earned: number
-  circuit_completed: number
+  circuit_completed: number | null
   routes_completed: number
   routes_total: number
   total_duration: number

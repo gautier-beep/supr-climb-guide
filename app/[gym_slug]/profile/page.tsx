@@ -36,11 +36,14 @@ export default function ProfilePage() {
     }
     setSubmitting(true)
     setError('')
-    const session = await createSession(gymSlug, name.trim(), level)
+    const { session, usedLocalFallback } = await createSession(gymSlug, name.trim(), level)
     setSubmitting(false)
     if (!session) {
       setError('Impossible de créer la session. Réessaie.')
       return
+    }
+    if (usedLocalFallback) {
+      console.warn('Session en mode local — exécute scripts/setup-sessions-rls.sql dans Supabase')
     }
     router.push(`/${gymSlug}/tutorial`)
   }
