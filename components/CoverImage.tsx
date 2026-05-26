@@ -7,6 +7,7 @@ interface CoverImageProps {
   alt: string
   className?: string
   height?: 'sm' | 'md' | 'lg'
+  /** Dégradé sombre sur la photo — désactivé par défaut (thème crème) */
   overlay?: boolean
 }
 
@@ -21,18 +22,15 @@ export default function CoverImage({
   alt,
   className = '',
   height = 'md',
-  overlay = true,
+  overlay = false,
 }: CoverImageProps) {
   return (
     <div className={`relative overflow-hidden rounded-2xl ${heights[height]} ${className}`}>
       <SafeImage
         src={src}
         alt={alt}
-        fallbackClassName="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-zinc-800 via-black to-black"
+        fallbackClassName="absolute inset-0 flex items-center justify-center bg-stone-100"
       />
-      {overlay && (
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20 pointer-events-none" />
-      )}
     </div>
   )
 }

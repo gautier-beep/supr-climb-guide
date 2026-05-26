@@ -89,19 +89,19 @@ export default function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-supr-surface border border-supr-border rounded-2xl p-8">
+      <div className="min-h-screen bg-supr-cream flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white border border-supr-border rounded-2xl p-8">
           <div className="w-16 h-16 bg-supr-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <Lock className="w-8 h-8 text-supr-orange" />
+            <Lock className="w-8 h-8 text-supr-mint" />
           </div>
-          <h1 className="text-2xl font-bold text-center text-white mb-2">Dashboard Admin</h1>
-          <p className="text-center text-gray-400 mb-6">{gym?.name}</p>
+          <h1 className="text-2xl font-bold text-center text-black mb-2">Dashboard Admin</h1>
+          <p className="text-center text-black mb-6">{gym?.name}</p>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label
                 htmlFor="admin-password"
-                className="block text-sm font-medium text-gray-300 mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 Mot de passe
               </label>
@@ -112,7 +112,7 @@ export default function AdminPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
                 autoFocus
-                className="w-full px-4 py-3 bg-black border border-supr-border rounded-xl text-white placeholder-gray-600 focus:border-supr-orange focus:ring-2 focus:ring-supr-orange/30 outline-none"
+                className="w-full px-4 py-3 bg-white border border-supr-border rounded-xl text-black placeholder-stone-400 focus:border-supr-mint focus:ring-2 focus:ring-supr-mint/30 outline-none"
                 placeholder="Entrez le mot de passe"
               />
               {error && (
@@ -122,23 +122,23 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full bg-supr-orange text-white font-semibold py-3 rounded-xl hover:bg-orange-600 transition-colors"
+              className="w-full bg-supr-mint text-white font-semibold py-3 rounded-xl hover:bg-orange-600 transition-colors"
             >
               Se connecter
             </button>
           </form>
 
-          <p className="mt-6 text-center text-xs text-gray-500">
+          <p className="mt-6 text-center text-xs text-black">
             Mot de passe fourni par SUPR lors de l&apos;installation
           </p>
 
           <div className="mt-4 flex flex-col items-center gap-2 text-sm">
-            <Link href="/" className="text-gray-400 hover:text-supr-orange transition-colors">
+            <Link href="/" className="text-black hover:text-supr-mint transition-colors">
               ← Accueil SUPR
             </Link>
             <Link
               href={`/${gymSlug}`}
-              className="text-gray-400 hover:text-supr-orange transition-colors"
+              className="text-black hover:text-supr-mint transition-colors"
             >
               Accueil {gym?.name ?? 'salle'}
             </Link>
@@ -149,18 +149,18 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-supr-cream text-black">
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Dashboard Analytics</h1>
-              <p className="text-gray-600">{gym?.name}</p>
+              <p className="text-black">{gym?.name}</p>
             </div>
             <button
               onClick={() => setIsAuthenticated(false)}
-              className="text-sm text-gray-600 hover:text-gray-900"
+              className="text-sm text-black hover:text-gray-900"
             >
               Déconnexion
             </button>
@@ -177,7 +177,7 @@ export default function AdminPage() {
                 <Eye className="w-6 h-6 text-blue-500" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Visites totales</p>
+                <p className="text-sm text-black">Visites totales</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.totalViews}</p>
               </div>
             </div>
@@ -186,10 +186,10 @@ export default function AdminPage() {
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-supr-orange/10 rounded-xl flex items-center justify-center">
-                <BarChart3 className="w-6 h-6 text-supr-orange" />
+                <BarChart3 className="w-6 h-6 text-supr-mint" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Vues Beginner Wall</p>
+                <p className="text-sm text-black">Vues Beginner Wall</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.beginnerWallViews}</p>
               </div>
             </div>
@@ -201,7 +201,7 @@ export default function AdminPage() {
                 <Users className="w-6 h-6 text-purple-500" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Vidéos visionnées</p>
+                <p className="text-sm text-black">Vidéos visionnées</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.learnViews}</p>
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function AdminPage() {
                 <ShoppingBag className="w-6 h-6 text-green-500" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Clics boutique</p>
+                <p className="text-sm text-black">Clics boutique</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.shopClicks}</p>
               </div>
             </div>
@@ -225,7 +225,7 @@ export default function AdminPage() {
                 <Share2 className="w-6 h-6 text-pink-500" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Partages Instagram</p>
+                <p className="text-sm text-black">Partages Instagram</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.instagramShares}</p>
               </div>
             </div>
@@ -237,7 +237,7 @@ export default function AdminPage() {
                 <BarChart3 className="w-6 h-6 text-yellow-500" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">Taux engagement</p>
+                <p className="text-sm text-black">Taux engagement</p>
                 <p className="text-2xl font-bold text-gray-900">
                   {stats.totalViews > 0 
                     ? Math.round(((stats.learnViews + stats.shopClicks) / stats.totalViews) * 100) 
@@ -265,8 +265,8 @@ export default function AdminPage() {
         </div>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Dashboard fourni par <span className="font-bold text-supr-orange">SUPR Climbing</span></p>
+        <div className="mt-8 text-center text-sm text-black">
+          <p>Dashboard fourni par <span className="font-bold text-supr-mint">SUPR Climbing</span></p>
         </div>
       </div>
     </div>

@@ -8,14 +8,14 @@ interface ImageFallbackProps {
   color?: string
 }
 
-/** Placeholder visuel — jamais d’icône « image cassée » du navigateur */
+/** Placeholder visuel — fond uni, sans dégradé */
 export default function ImageFallback({
-  className = 'absolute inset-0 flex items-center justify-center bg-gradient-to-br from-supr-orange/30 to-black',
-  iconClassName = 'w-10 h-10 text-white/25',
+  className = 'absolute inset-0 flex items-center justify-center bg-stone-100',
+  iconClassName = 'w-10 h-10 text-black/20',
   color,
 }: ImageFallbackProps) {
   const style = color
-    ? { background: `linear-gradient(145deg, ${color}44 0%, #0a0a0a 100%)` }
+    ? { backgroundColor: `${color}18` }
     : undefined
 
   return (

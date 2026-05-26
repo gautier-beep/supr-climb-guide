@@ -44,27 +44,27 @@ export default function PageNavArrows() {
 
   return (
     <nav
-      className="sticky top-0 z-50 w-full bg-black/90 backdrop-blur-md border-b border-supr-border"
+      className="sticky top-0 z-50 w-full bg-supr-cream/95 backdrop-blur-md border-b border-supr-border"
       aria-label="Navigation historique"
     >
       <div className="max-w-md mx-auto flex items-center justify-between px-2 h-12">
         <button
           type="button"
           onClick={handleBack}
-          className="flex items-center justify-center w-11 h-11 rounded-xl text-white hover:bg-supr-surface transition-colors"
+          className="flex items-center justify-center w-11 h-11 rounded-xl text-black hover:bg-stone-100 transition-colors"
           aria-label="Page précédente"
         >
           <ChevronLeft className="w-7 h-7" strokeWidth={2.5} />
         </button>
 
-        <span className="text-[10px] text-gray-500 uppercase tracking-wider truncate px-2 max-w-[50%]">
+        <span className="text-[10px] text-black uppercase tracking-wider truncate px-2 max-w-[50%]">
           {pathname === '/' ? 'SUPR' : pathname.replace(/^\//, '').split('/').pop()}
         </span>
 
         <button
           type="button"
           onClick={handleForward}
-          className="flex items-center justify-center w-11 h-11 rounded-xl text-white hover:bg-supr-surface transition-colors"
+          className="flex items-center justify-center w-11 h-11 rounded-xl text-black hover:bg-stone-100 transition-colors"
           aria-label="Page suivante"
         >
           <ChevronRight className="w-7 h-7" strokeWidth={2.5} />

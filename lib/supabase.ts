@@ -17,6 +17,7 @@ export interface Gym {
   address: string
   hours: any
   instagram_handle: string
+  language?: string
   created_at: string
 }
 

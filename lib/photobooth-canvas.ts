@@ -1,5 +1,12 @@
 import { formatDuration } from '@/lib/circuits'
 
+export interface StoryImageLabels {
+  circuitDone: string
+  stats: string
+  hashtags: string
+  brand: string
+}
+
 export async function generateStoryImage(opts: {
   backgroundColor: string
   gymName: string
@@ -8,6 +15,7 @@ export async function generateStoryImage(opts: {
   routesCount: number
   durationSeconds: number
   instagramHandle?: string
+  labels: StoryImageLabels
 }): Promise<string> {
   const canvas = document.createElement('canvas')
   canvas.width = 1080
@@ -15,7 +23,16 @@ export async function generateStoryImage(opts: {
   const ctx = canvas.getContext('2d')
   if (!ctx) return ''
 
-  const { backgroundColor, gymName, userName, circuitNumber, routesCount, durationSeconds, instagramHandle } = opts
+  const {
+    backgroundColor,
+    gymName,
+    userName,
+    circuitNumber,
+    routesCount,
+    durationSeconds,
+    instagramHandle,
+    labels,
+  } = opts
 
   ctx.fillStyle = backgroundColor || '#1a1a2e'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
@@ -32,18 +49,24 @@ export async function generateStoryImage(opts: {
   ctx.fillText(userName, canvas.width / 2, 920)
 
   ctx.font = 'bold 72px Inter, system-ui, sans-serif'
-  ctx.fillText(`CIRCUIT ${circuitNumber} TERMINÉ ! 🎉`, canvas.width / 2, 1050)
+  ctx.fillText(
+    labels.circuitDone.replace('{number}', String(circuitNumber)),
+    canvas.width / 2,
+    1050
+  )
 
   ctx.font = '48px Inter, system-ui, sans-serif'
   ctx.fillStyle = 'rgba(255,255,255,0.9)'
   ctx.fillText(
-    `${routesCount} voies • ${formatDuration(durationSeconds)}`,
+    labels.stats
+      .replace('{routes}', String(routesCount))
+      .replace('{duration}', formatDuration(durationSeconds)),
     canvas.width / 2,
     1180
   )
 
   ctx.font = '40px Inter, system-ui, sans-serif'
-  ctx.fillText('#escalade #débutant', canvas.width / 2, 1320)
+  ctx.fillText(labels.hashtags, canvas.width / 2, 1320)
 
   if (instagramHandle) {
     const handle = instagramHandle.startsWith('@') ? instagramHandle : `@${instagramHandle}`
@@ -52,7 +75,7 @@ export async function generateStoryImage(opts: {
 
   ctx.font = '32px Inter, system-ui, sans-serif'
   ctx.fillStyle = 'rgba(255,255,255,0.6)'
-  ctx.fillText('SUPR Climb Guide', canvas.width / 2, 1820)
+  ctx.fillText(labels.brand, canvas.width / 2, 1820)
 
   return canvas.toDataURL('image/png')
 }

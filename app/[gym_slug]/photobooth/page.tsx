@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState } from 'react'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { useGym } from '@/hooks/useGym'
+import { useTranslation } from '@/hooks/useTranslation'
 import { useClimbSession } from '@/hooks/useClimbSession'
 import FlowShell, {
   LoadingScreen,
@@ -20,6 +21,7 @@ function PhotoboothContent() {
   const circuit = Number(searchParams.get('circuit') || '1')
   const { gym, loading: gymLoading } = useGym(gymSlug)
   const { session, loading: sessionLoading } = useClimbSession(gymSlug, { required: true })
+  const { t } = useTranslation(gymSlug, gym?.language)
   const [imageUrl, setImageUrl] = useState<string | null>(null)
 
   useEffect(() => {
@@ -32,8 +34,14 @@ function PhotoboothContent() {
       routesCount: session.routes_total || getCircuitRouteCount(circuit),
       durationSeconds: session.total_duration || 0,
       instagramHandle: gym.instagram_handle,
+      labels: {
+        circuitDone: t('photobooth.canvas.circuitDone'),
+        stats: t('photobooth.canvas.stats'),
+        hashtags: t('photobooth.canvas.hashtags'),
+        brand: t('photobooth.canvas.brand'),
+      },
     }).then(setImageUrl)
-  }, [gym, session, circuit])
+  }, [gym, session, circuit, t])
 
   const handleShare = async () => {
     const sid = getStoredSessionId()
@@ -45,7 +53,7 @@ function PhotoboothContent() {
         const blob = await res.blob()
         const file = new File([blob], 'supr-story.png', { type: 'image/png' })
         await navigator.share({
-          title: 'Ma session escalade',
+          title: t('photobooth.shareTitle'),
           files: [file],
         })
         return
@@ -53,12 +61,12 @@ function PhotoboothContent() {
         /* fallback */
       }
     }
-    alert('Image prête — utilise Télécharger puis partage depuis ta galerie.')
+    alert(t('photobooth.shareReady'))
   }
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      `J'ai terminé le circuit ${circuit} chez ${gym?.name} ! 🧗 #escalade #débutant`
+      t('photobooth.whatsapp', { circuit, gym: gym?.name ?? '' })
     )
     window.open(`https://wa.me/?text=${text}`, '_blank')
   }
@@ -75,27 +83,27 @@ function PhotoboothContent() {
 
   return (
     <FlowShell gym={gym} gymSlug={gymSlug}>
-      <h1 className="text-2xl font-bold text-white text-center mb-4">Photobooth 📸</h1>
+      <h1 className="text-2xl font-bold text-black text-center mb-4">{t('photobooth.title')}</h1>
 
-      <div className="bg-black/40 rounded-2xl overflow-hidden mb-6 aspect-[9/16] max-h-[50vh] mx-auto flex items-center justify-center">
+      <div className="bg-stone-100 rounded-2xl overflow-hidden mb-6 aspect-[9/16] max-h-[50vh] mx-auto flex items-center justify-center border border-supr-border">
         {imageUrl ? (
           <img src={imageUrl} alt="Story" className="w-full h-full object-contain" />
         ) : (
-          <div className="animate-spin h-10 w-10 border-2 border-white border-t-transparent rounded-full" />
+          <div className="animate-spin h-10 w-10 border-2 border-supr-mint border-t-transparent rounded-full" />
         )}
       </div>
 
       <div className="space-y-3">
         <PrimaryButton color={gym.primary_color} onClick={handleShare}>
-          📱 Partager Instagram Story
+          {t('photobooth.shareInstagram')}
         </PrimaryButton>
-        <SecondaryButton onClick={handleWhatsApp}>💬 Partager WhatsApp</SecondaryButton>
-        <SecondaryButton onClick={handleDownload}>⬇️ Télécharger image</SecondaryButton>
+        <SecondaryButton onClick={handleWhatsApp}>{t('photobooth.shareWhatsapp')}</SecondaryButton>
+        <SecondaryButton onClick={handleDownload}>{t('photobooth.download')}</SecondaryButton>
         <PrimaryButton
           color={gym.primary_color}
           onClick={() => router.push(`/${gymSlug}/leaderboard`)}
         >
-          Continuer →
+          {t('photobooth.continue')}
         </PrimaryButton>
       </div>
     </FlowShell>

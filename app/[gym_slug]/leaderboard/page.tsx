@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useGym } from '@/hooks/useGym'
+import { useTranslation } from '@/hooks/useTranslation'
 import { useClimbSession } from '@/hooks/useClimbSession'
 import FlowShell, {
   FlowCard,
@@ -25,6 +26,7 @@ export default function LeaderboardPage() {
   const gymSlug = params.gym_slug as string
   const { gym, loading: gymLoading } = useGym(gymSlug)
   const { session, loading: sessionLoading } = useClimbSession(gymSlug, { required: true })
+  const { t } = useTranslation(gymSlug, gym?.language)
   const [rows, setRows] = useState<LeaderboardRow[]>([])
 
   useEffect(() => {
@@ -57,22 +59,28 @@ export default function LeaderboardPage() {
 
   return (
     <FlowShell gym={gym} gymSlug={gymSlug}>
-      <h1 className="text-2xl font-bold text-white text-center mb-2">🏆 Classement</h1>
-      <p className="text-center text-gray-400 text-sm mb-6">Cette semaine — {gym.name}</p>
+      <h1 className="text-2xl font-bold text-black text-center mb-2">{t('leaderboard.title')}</h1>
+      <p className="text-center text-black text-sm mb-6">
+        {t('leaderboard.subtitle', { gym: gym.name })}
+      </p>
 
       <FlowCard className="p-0 overflow-hidden">
         <ul className="divide-y divide-gray-100">
           {rows.length === 0 ? (
-            <li className="p-6 text-center text-gray-500">Pas encore de scores cette semaine.</li>
+            <li className="p-6 text-center text-black">{t('leaderboard.empty')}</li>
           ) : (
             rows.map((row, i) => {
               const rank = row.rank ?? i + 1
               const isMe = row.user_name === session.user_name
+              const circuitLabel =
+                row.circuits_completed > 1
+                  ? t('leaderboard.circuitMany', { count: row.circuits_completed })
+                  : t('leaderboard.circuitOne', { count: row.circuits_completed })
               return (
                 <li
                   key={`${row.user_name}-${rank}`}
                   className={`flex items-center justify-between px-4 py-3 text-sm ${
-                    isMe ? 'bg-blue-50 text-blue-900 font-semibold' : 'text-gray-800'
+                    isMe ? 'bg-stone-100 text-black font-semibold' : 'text-black'
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
@@ -80,8 +88,10 @@ export default function LeaderboardPage() {
                     <span className="truncate">{row.user_name}</span>
                   </div>
                   <div className="text-right flex-shrink-0 ml-2">
-                    <span className="block">{row.circuits_completed} circuit{row.circuits_completed > 1 ? 's' : ''}</span>
-                    <span className="text-xs opacity-70">{row.points} pts</span>
+                    <span className="block">{circuitLabel}</span>
+                    <span className="text-xs opacity-70">
+                      {t('leaderboard.points', { points: row.points })}
+                    </span>
                   </div>
                 </li>
               )
@@ -91,14 +101,14 @@ export default function LeaderboardPage() {
       </FlowCard>
 
       {userRank > 0 && (
-        <p className="text-center text-gray-400 text-sm mt-4">
-          Ta position : #{userRank}
+        <p className="text-center text-black text-sm mt-4">
+          {t('leaderboard.yourRank', { rank: userRank })}
         </p>
       )}
 
       <div className="mt-6">
         <PrimaryButton color={gym.primary_color} onClick={() => router.push(`/${gymSlug}/reminder`)}>
-          Continuer →
+          {t('leaderboard.continue')}
         </PrimaryButton>
       </div>
     </FlowShell>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { resolveLanguage, setCachedLanguage } from '@/lib/i18n'
 import type { Gym } from '@/lib/supabase'
 
 export function useGym(gymSlug: string) {
@@ -17,8 +18,12 @@ export function useGym(gymSlug: string) {
         .eq('slug', gymSlug)
         .single()
 
-      if (!error && data) {
-        setGym(data)
+      if (error) {
+        console.warn('[useGym]', gymSlug, error.message)
+        setGym(null)
+      } else if (data) {
+        setGym(data as Gym)
+        setCachedLanguage(gymSlug, resolveLanguage(data.language))
         if (data.primary_color) {
           document.documentElement.style.setProperty('--primary-color', data.primary_color)
         }

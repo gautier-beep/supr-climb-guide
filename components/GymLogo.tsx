@@ -9,6 +9,7 @@ interface GymLogoProps {
   logoUrl?: string | null
   primaryColor?: string
   size?: 'sm' | 'md' | 'lg'
+  variant?: 'light' | 'dark'
 }
 
 const sizes = {
@@ -21,8 +22,9 @@ export default function GymLogo({
   slug,
   name,
   logoUrl,
-  primaryColor = '#FF6B35',
+  primaryColor = '#14b8a6',
   size = 'md',
+  variant = 'light',
 }: GymLogoProps) {
   const s = sizes[size]
   const logoSrc = getGymLogoUrl(slug, logoUrl)
@@ -35,6 +37,7 @@ export default function GymLogo({
       color={primaryColor}
       className={`${s.img} max-w-full object-contain`}
       boxClassName={s.box}
+      variant={variant}
     />
   )
 }

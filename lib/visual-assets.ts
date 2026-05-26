@@ -1,11 +1,13 @@
-/** Photos & visuels — Unsplash (escalade / salles) */
+/** Photos SUP'R — fichiers locaux dans public/images/supr */
+const img = (name: string) => `/images/supr/${name}`
+
 export const images = {
-  hero: 'https://images.unsplash.com/photo-1522163186832-c4fabaed25c0?w=1200&q=80',
-  learn: 'https://images.unsplash.com/photo-1564760055775-d263b8f73347?w=800&q=80',
-  holds: 'https://images.unsplash.com/photo-1599059813006-112e04fa2b94?w=800&q=80',
-  worldCup: 'https://images.unsplash.com/photo-1515526832075-ef1b06c3313a?w=800&q=80',
-  community: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80',
-  boutique: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+  hero: img('hero.png'),
+  learn: img('learn.png'),
+  holds: img('holds.png'),
+  worldCup: img('world-cup.png'),
+  community: img('community.png'),
+  boutique: img('boutique.png'),
 }
 
 export const gymVisuals: Record<
@@ -13,17 +15,17 @@ export const gymVisuals: Record<
   { cover: string; emoji: string; label: string }
 > = {
   'bloc-en-stock': {
-    cover: 'https://images.unsplash.com/photo-1564760055775-d263b8f73347?w=600&q=80',
+    cover: img('gym-bloc-en-stock.png'),
     emoji: '🟠',
     label: 'Bloc',
   },
   'bloc-shop': {
-    cover: 'https://images.unsplash.com/photo-1599059813006-112e04fa2b94?w=600&q=80',
+    cover: img('gym-bloc-shop.png'),
     emoji: '🟢',
     label: 'Shop',
   },
   'boulder-space': {
-    cover: 'https://images.unsplash.com/photo-1522163186832-c4fabaed25c0?w=600&q=80',
+    cover: img('gym-boulder-space.png'),
     emoji: '🔵',
     label: 'Boulder',
   },
@@ -31,18 +33,18 @@ export const gymVisuals: Record<
 
 export const tutorialThumbnails = {
   basics: [
-    'https://images.unsplash.com/photo-1564760055775-d263b8f73347?w=400&q=80',
-    'https://images.unsplash.com/photo-1599059813006-112e04fa2b94?w=400&q=80',
-    'https://images.unsplash.com/photo-1522163186832-c4fabaed25c0?w=400&q=80',
-    'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=400&q=80',
-    'https://images.unsplash.com/photo-1515526832075-ef1b06c3313a?w=400&q=80',
+    img('tuto-01.png'),
+    img('tuto-02.png'),
+    img('tuto-03.png'),
+    img('tuto-04.png'),
+    img('tuto-05.png'),
   ],
   techniques: [
-    'https://images.unsplash.com/photo-1599059813006-112e04fa2b94?w=400&q=80',
-    'https://images.unsplash.com/photo-1564760055775-d263b8f73347?w=400&q=80',
-    'https://images.unsplash.com/photo-1522163186832-c4fabaed25c0?w=400&q=80',
-    'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=400&q=80',
-    'https://images.unsplash.com/photo-1515526832075-ef1b06c3313a?w=400&q=80',
+    img('tuto-06.png'),
+    img('tuto-07.png'),
+    img('tuto-08.png'),
+    img('tuto-09.png'),
+    img('tuto-10.png'),
   ],
 }
 

@@ -7,6 +7,7 @@ import { GraduationCap, MapPin, Mountain, Share2, ShoppingBag } from 'lucide-rea
 import ShopSection from '@/components/ShopSection'
 import GymLogo from '@/components/GymLogo'
 import GymCover from '@/components/GymCover'
+import { getGymVisual } from '@/lib/visual-assets'
 
 type Tab = 'accueil' | 'boutique'
 
@@ -49,8 +50,8 @@ function GymHubContent() {
 
   if (loading || !gym) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-supr-orange" />
+      <div className="min-h-screen flex items-center justify-center bg-supr-cream">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-supr-mint" />
       </div>
     )
   }
@@ -63,18 +64,22 @@ function GymHubContent() {
   ]
 
   return (
-    <div className="min-h-screen bg-black max-w-md mx-auto">
+    <div className="min-h-screen bg-supr-cream text-black max-w-md mx-auto">
       <div className="relative h-44">
-        <GymCover name={gym.name} color={gym.primary_color || '#FF6B35'} />
-        <div className="absolute inset-0 flex flex-col items-center justify-end pb-6">
-          <GymLogo slug={gymSlug} name={gym.name} logoUrl={gym.logo_url} primaryColor={gym.primary_color} size="lg" />
-          <h1 className="text-xl font-bold text-white mt-2">{gym.name}</h1>
-        </div>
+        <GymCover
+          name={gym.name}
+          color={gym.primary_color || '#14b8a6'}
+          coverUrl={getGymVisual(gymSlug).cover}
+        />
+      </div>
+      <div className="flex flex-col items-center px-4 py-5 bg-supr-cream border-b border-supr-border">
+        <GymLogo slug={gymSlug} name={gym.name} logoUrl={gym.logo_url} primaryColor={gym.primary_color} size="lg" />
+        <h1 className="text-xl font-bold text-black mt-2">{gym.name}</h1>
       </div>
       <div className="px-4 py-6 space-y-3">
         <button
           onClick={() => router.push(`/${gymSlug}`)}
-          className="w-full py-3 bg-supr-orange text-white font-bold rounded-xl"
+          className="w-full py-3 bg-supr-mint text-white font-bold rounded-xl"
         >
           Parcours initiation V1 🚀
         </button>
@@ -82,14 +87,14 @@ function GymHubContent() {
           <button
             key={i}
             onClick={() => router.push(item.href)}
-            className="w-full bg-supr-surface border border-supr-border rounded-2xl p-4 text-left"
+            className="w-full bg-white border border-supr-border rounded-2xl p-4 text-left"
             style={{ borderLeftWidth: 4, borderLeftColor: item.color }}
           >
             <div className="flex items-center gap-3">
-              <div style={{ color: item.color }}>{item.icon}</div>
+              <div className="text-black">{item.icon}</div>
               <div>
-                <p className="font-bold text-white text-sm">{item.title}</p>
-                <p className="text-xs text-gray-400">{item.subtitle}</p>
+                <p className="font-bold text-black text-sm">{item.title}</p>
+                <p className="text-xs text-black">{item.subtitle}</p>
               </div>
             </div>
           </button>
@@ -102,7 +107,7 @@ function GymHubContent() {
 
 export default function GymHubPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-black" />}>
+    <Suspense fallback={<div className="min-h-screen bg-supr-cream" />}>
       <GymHubContent />
     </Suspense>
   )

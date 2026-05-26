@@ -6,6 +6,7 @@ import { supabase, Gym } from '@/lib/supabase'
 import { QrCode, CheckCircle2 } from 'lucide-react'
 import { beginnerWallSteps, beginnerWallTips } from '@/lib/supr-content'
 import GymCover from '@/components/GymCover'
+import { getGymVisual } from '@/lib/visual-assets'
 import GymLogo from '@/components/GymLogo'
 
 export default function BeginnerWallPage() {
@@ -45,23 +46,27 @@ export default function BeginnerWallPage() {
 
   if (loading || !gym) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-supr-orange" />
+      <div className="min-h-screen flex items-center justify-center bg-supr-cream">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-supr-mint" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black">
-      <div className="border-b border-supr-border bg-black">
+    <div className="min-h-screen bg-supr-cream">
+      <div className="border-b border-supr-border bg-white">
         <div className="max-w-2xl mx-auto px-4 py-4">
-          <h1 className="text-xl font-bold text-white">Mur débutant SUP&apos;R</h1>
+          <h1 className="text-xl font-bold text-black">Mur débutant SUP&apos;R</h1>
         </div>
       </div>
 
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
         <div className="relative h-28 rounded-2xl overflow-hidden">
-          <GymCover name={gym.name} color={gym.primary_color || '#FF6B35'} />
+          <GymCover
+            name={gym.name}
+            color={gym.primary_color || '#14b8a6'}
+            coverUrl={getGymVisual(gymSlug).cover}
+          />
         </div>
         <div className="flex items-center justify-center gap-3 -mt-2">
           <GymLogo
@@ -72,32 +77,32 @@ export default function BeginnerWallPage() {
             size="md"
           />
           <div>
-            <h2 className="text-lg font-black text-white">Mur débutant SUP&apos;R</h2>
-            <p className="text-gray-400 text-xs">{gym.name}</p>
+            <h2 className="text-lg font-black text-black">Mur débutant SUP&apos;R</h2>
+            <p className="text-black text-xs">{gym.name}</p>
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-supr-orange to-orange-600 rounded-2xl p-6 text-white text-center">
-          <QrCode className="w-12 h-12 mx-auto mb-3 opacity-90" />
-          <p className="text-orange-100 text-sm">
+        <div className="bg-white border border-supr-border rounded-2xl p-6 text-black text-center">
+          <QrCode className="w-12 h-12 mx-auto mb-3 text-supr-mint" />
+          <p className="text-black text-sm">
             Scanne le QR sur le mur pour suivre ta progression
           </p>
         </div>
 
         <section>
-          <h2 className="text-lg font-bold text-white mb-3">Comment grimper ton premier bloc</h2>
+          <h2 className="text-lg font-bold text-black mb-3">Comment grimper ton premier bloc</h2>
           <div className="space-y-3">
             {beginnerWallSteps.map((item) => (
               <div
                 key={item.step}
-                className="flex gap-3 bg-supr-surface border border-supr-border rounded-xl p-4"
+                className="flex gap-3 bg-white border border-supr-border rounded-xl p-4"
               >
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-supr-orange/20 text-supr-orange flex items-center justify-center font-bold text-sm">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-supr-orange/20 text-supr-mint flex items-center justify-center font-bold text-sm">
                   {item.step}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-sm">{item.title}</h3>
-                  <p className="text-xs text-gray-400 mt-1">{item.description}</p>
+                  <h3 className="font-semibold text-black text-sm">{item.title}</h3>
+                  <p className="text-xs text-black mt-1">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -105,14 +110,14 @@ export default function BeginnerWallPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-white mb-3">Équipement SUP&apos;R</h2>
+          <h2 className="text-lg font-bold text-black mb-3">Équipement SUP&apos;R</h2>
           <div className="space-y-2">
             {beginnerWallTips.map((tip) => (
               <div key={tip.title} className="flex gap-3 items-start">
-                <CheckCircle2 className="w-5 h-5 text-supr-orange flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-supr-mint flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm text-white font-medium">{tip.title}</p>
-                  <p className="text-xs text-gray-400">{tip.description}</p>
+                  <p className="text-sm text-black font-medium">{tip.title}</p>
+                  <p className="text-xs text-black">{tip.description}</p>
                 </div>
               </div>
             ))}
@@ -121,7 +126,7 @@ export default function BeginnerWallPage() {
 
         <button
           onClick={() => router.push(`/${gymSlug}/learn`)}
-          className="w-full bg-supr-orange text-white font-semibold py-4 rounded-xl hover:bg-orange-600 transition-colors"
+          className="w-full bg-supr-mint text-white font-semibold py-4 rounded-xl hover:opacity-90 transition-colors"
         >
           Voir tous les tutos →
         </button>

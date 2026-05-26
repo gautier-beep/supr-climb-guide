@@ -19,23 +19,23 @@ export default function GymError({
   }, [error])
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-supr-cream flex items-center justify-center px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-2xl font-bold text-white mb-2">Erreur de chargement</h1>
-        <p className="text-gray-400 mb-6 text-sm">
+        <h1 className="text-2xl font-bold text-black mb-2">Erreur de chargement</h1>
+        <p className="text-black mb-6 text-sm">
           Impossible d&apos;afficher cette page pour le moment.
         </p>
         <div className="flex flex-col gap-3">
           <button
             onClick={() => reset()}
-            className="bg-supr-orange text-white font-semibold py-3 px-6 rounded-xl hover:bg-orange-600 transition-colors"
+            className="bg-supr-mint text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition-colors"
           >
             Réessayer
           </button>
           {gymSlug && (
             <Link
               href={`/${gymSlug}`}
-              className="text-gray-400 hover:text-supr-orange text-sm transition-colors"
+              className="text-black hover:text-supr-mint text-sm transition-colors underline"
             >
               Retour à la salle
             </Link>

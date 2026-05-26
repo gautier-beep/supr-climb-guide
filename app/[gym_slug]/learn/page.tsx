@@ -65,7 +65,7 @@ export default function LearnPage() {
 
   if (selectedVideo) {
     return (
-      <div className="min-h-screen bg-black">
+      <div className="min-h-screen bg-supr-cream">
         <div className="relative" style={{ paddingBottom: '56.25%' }}>
           <iframe
             src={selectedVideo}
@@ -78,7 +78,7 @@ export default function LearnPage() {
         <div className="p-4">
           <button
             onClick={() => setSelectedVideo(null)}
-            className="w-full bg-supr-surface border border-supr-border text-white rounded-xl py-3 px-4 font-semibold hover:border-supr-orange transition-colors"
+            className="w-full bg-white border border-supr-border text-black rounded-xl py-3 px-4 font-semibold hover:border-supr-mint transition-colors"
           >
             Retour aux tutos
           </button>
@@ -88,42 +88,42 @@ export default function LearnPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
-      <div className="border-b border-supr-border bg-black">
+    <div className="min-h-screen bg-supr-cream">
+      <div className="border-b border-supr-border bg-white">
         <div className="max-w-2xl mx-auto px-4 py-4">
-          <h1 className="text-xl font-bold text-white">Apprendre à grimper</h1>
+          <h1 className="text-xl font-bold text-black">Apprendre à grimper</h1>
         </div>
       </div>
 
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-8">
         <CoverImage src={images.learn} alt="Mur débutant" height="sm" className="mb-4" />
 
-        <section className="bg-gradient-to-br from-supr-orange/30 to-orange-600/10 border border-supr-orange/40 rounded-2xl p-6">
+        <section className="bg-white border border-supr-mint/40 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-3">
-            <Mountain className="w-8 h-8 text-supr-orange" />
+            <Mountain className="w-8 h-8 text-supr-mint" />
             <div>
-              <h2 className="text-xl font-bold text-white">Mur débutant SUP&apos;R</h2>
-              <p className="text-sm text-gray-400">Zone dédiée dans ta salle</p>
+              <h2 className="text-xl font-bold text-black">Mur débutant SUP&apos;R</h2>
+              <p className="text-sm text-black">Zone dédiée dans ta salle</p>
             </div>
           </div>
-          <p className="text-gray-300 text-sm mb-4">
+          <p className="text-black text-sm mb-4">
             Prises larges, progression par couleur, parcours pensés pour débuter sans frustration.
           </p>
           <button
             onClick={() => router.push(`/${gymSlug}/beginner-wall`)}
-            className="w-full flex items-center justify-center gap-2 bg-supr-orange text-white font-semibold py-3 rounded-xl hover:bg-orange-600 transition-colors mb-3"
+            className="w-full flex items-center justify-center gap-2 bg-supr-mint text-white font-semibold py-3 rounded-xl hover:opacity-90 transition-colors mb-3"
           >
             <QrCode className="w-5 h-5" />
             Découvrir le mur débutant
           </button>
-          <p className="text-xs text-gray-500 text-center">
+          <p className="text-xs text-black text-center">
             Scanne le QR sur le mur pour accéder à ce guide
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-white mb-2">Ton premier bloc — 4 étapes</h2>
-          <p className="text-gray-400 text-sm mb-4">
+          <h2 className="text-lg font-bold text-black mb-2">Ton premier bloc — 4 étapes</h2>
+          <p className="text-black text-sm mb-4">
             Coche chaque étape au fur et à mesure. Inspiré du parcours Beginner Wall SUP&apos;R.
           </p>
           <div className="space-y-3">
@@ -135,23 +135,23 @@ export default function LearnPage() {
                   onClick={() => toggleStep(item.step)}
                   className={`w-full text-left rounded-xl p-4 border transition-all ${
                     done
-                      ? 'bg-supr-orange/10 border-supr-orange/50'
-                      : 'bg-supr-surface border-supr-border hover:border-supr-orange/30'
+                      ? 'bg-supr-orange/10 border-supr-mint/50'
+                      : 'bg-white border-supr-border hover:border-supr-mint/30'
                   }`}
                 >
                   <div className="flex items-start gap-3">
                     <div
                       className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                        done ? 'bg-supr-orange text-white' : 'bg-black border border-supr-border text-gray-400'
+                        done ? 'bg-supr-mint text-white' : 'bg-stone-100 border border-supr-border text-black'
                       }`}
                     >
                       {done ? <CheckCircle2 className="w-5 h-5" /> : item.step}
                     </div>
                     <div>
-                      <h3 className={`font-semibold text-sm ${done ? 'text-supr-orange' : 'text-white'}`}>
+                      <h3 className={`font-semibold text-sm ${done ? 'text-supr-mint' : 'text-black'}`}>
                         {item.title}
                       </h3>
-                      <p className="text-xs text-gray-400 mt-1">{item.description}</p>
+                      <p className="text-xs text-black mt-1">{item.description}</p>
                     </div>
                   </div>
                 </button>
@@ -159,30 +159,30 @@ export default function LearnPage() {
             })}
           </div>
           {completedSteps.length === beginnerWallSteps.length && (
-            <p className="text-center text-supr-orange text-sm font-semibold mt-4">
+            <p className="text-center text-supr-mint text-sm font-semibold mt-4">
               Bravo — tu es prêt pour ta première session complète ! 🎉
             </p>
           )}
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-white mb-3">Pourquoi le mur SUP&apos;R ?</h2>
+          <h2 className="text-lg font-bold text-black mb-3">Pourquoi le mur SUP&apos;R ?</h2>
           <div className="space-y-3">
             {beginnerWallTips.map((tip) => (
               <div
                 key={tip.title}
-                className="bg-supr-surface border border-supr-border rounded-xl p-4"
+                className="bg-white border border-supr-border rounded-xl p-4"
               >
-                <h3 className="font-semibold text-white text-sm mb-1">{tip.title}</h3>
-                <p className="text-xs text-gray-400">{tip.description}</p>
+                <h3 className="font-semibold text-black text-sm mb-1">{tip.title}</h3>
+                <p className="text-xs text-black">{tip.description}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-white mb-2">Les bases</h2>
-          <p className="text-gray-400 mb-6 text-sm">
+          <h2 className="text-2xl font-bold text-black mb-2">Les bases</h2>
+          <p className="text-black mb-6 text-sm">
             Vidéos pour compléter ta découverte du mur débutant.
           </p>
           <div className="space-y-3">
@@ -190,23 +190,23 @@ export default function LearnPage() {
               <button
                 key={index}
                 onClick={() => setSelectedVideo(tutorial.video)}
-                className="w-full bg-supr-surface border border-supr-border rounded-xl hover:border-supr-orange/40 transition-all overflow-hidden text-left group"
+                className="w-full bg-white border border-supr-border rounded-xl hover:border-supr-mint/40 transition-all overflow-hidden text-left group"
               >
                 <div className="flex items-center gap-0">
                   <div className="relative w-20 h-20 flex-shrink-0">
                     <SafeImage
                       src={tutorial.thumb}
                       alt=""
-                      fallbackClassName="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-supr-orange/30 to-zinc-900"
-                      iconClassName="w-6 h-6 text-supr-orange/40"
+                      fallbackClassName="absolute inset-0 flex items-center justify-center bg-stone-100"
+                      iconClassName="w-6 h-6 text-supr-mint/40"
                     />
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center pointer-events-none">
                       <Play className="w-8 h-8 text-white opacity-90" />
                     </div>
                   </div>
                   <div className="flex-1 p-4">
-                    <h3 className="font-semibold text-white mb-1">{tutorial.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <h3 className="font-semibold text-black mb-1">{tutorial.title}</h3>
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <Clock className="w-4 h-4" />
                       <span>{tutorial.duration}</span>
                     </div>
@@ -218,8 +218,8 @@ export default function LearnPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-white mb-2">La suite</h2>
-          <p className="text-gray-400 mb-6 text-sm">
+          <h2 className="text-2xl font-bold text-black mb-2">La suite</h2>
+          <p className="text-black mb-6 text-sm">
             Techniques pour progresser après tes premiers blocs sur le mur débutant.
           </p>
           <div className="space-y-3">
@@ -227,23 +227,23 @@ export default function LearnPage() {
               <button
                 key={index}
                 onClick={() => setSelectedVideo(tutorial.video)}
-                className="w-full bg-supr-surface border border-supr-border rounded-xl hover:border-blue-500/40 transition-all overflow-hidden text-left group"
+                className="w-full bg-white border border-supr-border rounded-xl hover:border-blue-500/40 transition-all overflow-hidden text-left group"
               >
                 <div className="flex items-center gap-0">
                   <div className="relative w-20 h-20 flex-shrink-0">
                     <SafeImage
                       src={tutorial.thumb}
                       alt=""
-                      fallbackClassName="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-supr-orange/30 to-zinc-900"
-                      iconClassName="w-6 h-6 text-supr-orange/40"
+                      fallbackClassName="absolute inset-0 flex items-center justify-center bg-stone-100"
+                      iconClassName="w-6 h-6 text-supr-mint/40"
                     />
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center pointer-events-none">
                       <Play className="w-8 h-8 text-white opacity-90" />
                     </div>
                   </div>
                   <div className="flex-1 p-4">
-                    <h3 className="font-semibold text-white mb-1">{tutorial.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <h3 className="font-semibold text-black mb-1">{tutorial.title}</h3>
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <Clock className="w-4 h-4" />
                       <span>{tutorial.duration}</span>
                     </div>
@@ -254,12 +254,12 @@ export default function LearnPage() {
           </div>
         </section>
 
-        <section className="bg-supr-surface border border-supr-border rounded-2xl p-6">
+        <section className="bg-white border border-supr-border rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-4">
-            <Smartphone className="w-7 h-7 text-supr-orange" />
-            <h2 className="text-xl font-bold text-white">Télécharge l&apos;app SUPR</h2>
+            <Smartphone className="w-7 h-7 text-supr-mint" />
+            <h2 className="text-xl font-bold text-black">Télécharge l&apos;app SUPR</h2>
           </div>
-          <p className="text-gray-400 text-sm mb-6">
+          <p className="text-black text-sm mb-6">
             Synchronise ton profil grimpeur et suis ta progression sur le mur débutant.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
@@ -276,7 +276,7 @@ export default function LearnPage() {
               href="https://play.google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 bg-white/10 border border-supr-border text-white font-semibold py-3 px-4 rounded-xl hover:bg-white/20 transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 bg-white border border-supr-border text-black font-semibold py-3 px-4 rounded-xl hover:bg-stone-50 transition-colors"
             >
               <Download className="w-5 h-5" />
               Google Play
@@ -284,20 +284,20 @@ export default function LearnPage() {
           </div>
         </section>
 
-        <section className="bg-gradient-to-br from-supr-orange/20 to-orange-600/10 border border-supr-orange/30 rounded-2xl p-6">
+        <section className="bg-white border border-supr-mint/30 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-4">
-            <UserCircle className="w-7 h-7 text-supr-orange" />
-            <h2 className="text-xl font-bold text-white">Créer ton profil grimpeur</h2>
+            <UserCircle className="w-7 h-7 text-supr-mint" />
+            <h2 className="text-xl font-bold text-black">Créer ton profil grimpeur</h2>
           </div>
 
           {profileStep === 'intro' && (
             <>
-              <p className="text-gray-400 text-sm mb-6">
+              <p className="text-black text-sm mb-6">
                 Ton niveau et ta progression sur le mur débutant seront enregistrés ici.
               </p>
               <button
                 onClick={() => setProfileStep('form')}
-                className="w-full bg-supr-orange text-white font-semibold py-3 px-6 rounded-xl hover:bg-orange-600 transition-colors"
+                className="w-full bg-supr-mint text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition-colors"
               >
                 Créer mon profil
               </button>
@@ -307,21 +307,21 @@ export default function LearnPage() {
           {profileStep === 'form' && (
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-gray-400 mb-1">Ton prénom ou pseudo</label>
+                <label className="block text-sm text-black mb-1">Ton prénom ou pseudo</label>
                 <input
                   type="text"
                   value={profileName}
                   onChange={(e) => setProfileName(e.target.value)}
                   placeholder="Ex: Alex"
-                  className="w-full bg-black border border-supr-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-supr-orange outline-none"
+                  className="w-full bg-white border border-supr-border rounded-xl px-4 py-3 text-black placeholder-stone-400 focus:border-supr-mint outline-none"
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-400 mb-1">Ton niveau</label>
+                <label className="block text-sm text-black mb-1">Ton niveau</label>
                 <select
                   value={profileLevel}
                   onChange={(e) => setProfileLevel(e.target.value)}
-                  className="w-full bg-black border border-supr-border rounded-xl px-4 py-3 text-white focus:border-supr-orange outline-none"
+                  className="w-full bg-white border border-supr-border rounded-xl px-4 py-3 text-black focus:border-supr-mint outline-none"
                 >
                   <option value="debutant">Débutant — mur vert</option>
                   <option value="intermediaire">Intermédiaire — bleu et rouge</option>
@@ -331,7 +331,7 @@ export default function LearnPage() {
               <button
                 onClick={saveProfile}
                 disabled={!profileName.trim()}
-                className="w-full bg-supr-orange text-white font-semibold py-3 px-6 rounded-xl hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-supr-mint text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Enregistrer mon profil
               </button>
@@ -340,18 +340,18 @@ export default function LearnPage() {
 
           {profileStep === 'done' && (
             <div className="text-center">
-              <p className="text-white font-semibold text-lg mb-2">
+              <p className="text-black font-semibold text-lg mb-2">
                 Bienvenue, {profileName} ! 🎉
               </p>
-              <p className="text-gray-400 text-sm mb-2">
+              <p className="text-black text-sm mb-2">
                 {completedSteps.length}/{beginnerWallSteps.length} étapes du mur débutant complétées
               </p>
-              <p className="text-gray-400 text-sm mb-6">
+              <p className="text-black text-sm mb-6">
                 Profil enregistré — sync avec l&apos;app SUPR bientôt disponible.
               </p>
               <button
                 onClick={() => router.push(`/${gymSlug}`)}
-                className="bg-white text-supr-orange font-semibold py-3 px-6 rounded-xl hover:bg-gray-200 transition-colors"
+                className="bg-white text-supr-mint font-semibold py-3 px-6 rounded-xl hover:bg-gray-200 transition-colors"
               >
                 Retour à la salle
               </button>

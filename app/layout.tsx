@@ -16,7 +16,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: 'cover',
-  themeColor: '#000000',
+  themeColor: '#fffbf7',
 }
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className="bg-black text-white min-h-screen flex flex-col">
+      <body className="bg-supr-cream text-black min-h-screen flex flex-col">
         <main className="flex-1 w-full">
           <Suspense fallback={null}>
             <PageNavArrows />

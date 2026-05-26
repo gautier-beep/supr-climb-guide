@@ -1,0 +1,181 @@
+{
+  "landing": {
+    "notFound": "Halle nicht gefunden",
+    "backHome": "Zurück zur SUPR-Startseite",
+    "welcome": "Willkommen bei {name}!",
+    "defaultSubtitle": "Bereit für deine Boulder-Einweisung?",
+    "start": "Meine Einweisung starten 🚀",
+    "meta": "Geführter Parcours · 3 Zirkel · ~30 Min",
+    "demoBanner": "🎬 DEMO-MODUS — So funktioniert es in Ihrer Halle!"
+  },
+  "confirm": {
+    "title": "Ist das die richtige Halle?",
+    "yes": "✓ Ja, stimmt",
+    "change": "❌ Halle wechseln",
+    "chooseGym": "Halle auswählen"
+  },
+  "profile": {
+    "title": "Dein Kletterprofil",
+    "subtitle": "Ein paar Infos für deinen personalisierten Parcours",
+    "nameLabel": "Vorname oder Spitzname *",
+    "namePlaceholder": "z. B. Alex",
+    "levelLabel": "Dein Level",
+    "levelNever": "Noch nie geklettert",
+    "levelFew": "1-3 Mal",
+    "levelRegular": "Regelmäßig",
+    "photoSoon": "Profilfoto: bald verfügbar (V1.1)",
+    "errorName": "Gib deinen Vornamen oder Spitznamen ein",
+    "errorSession": "Sitzung konnte nicht erstellt werden. Versuche es erneut.",
+    "submitting": "Wird erstellt…",
+    "continue": "Weiter →"
+  },
+  "tutorial": {
+    "progress": "Tutorial {current}/{total}",
+    "quizError": "Nicht ganz — versuch es nochmal!",
+    "next": "Weiter →",
+    "startCircuit": "Zirkel 1 starten 🟢",
+    "back": "← Zurück",
+    "slides": [
+      {
+        "title": "Sicherheit",
+        "text": "Vor dem Klettern: Landezone prüfen und warten, bis niemand darunter steht.",
+        "quiz": {
+          "question": "Was tun, wenn jemand über dir klettert?",
+          "options": ["Trotzdem klettern", "Warten bis er/sie absteigt", "Schreien"],
+          "correct": 1
+        }
+      },
+      {
+        "title": "Griffe",
+        "text": "Nutze die Füße genauso wie die Hände! Mit den Beinen drücken.",
+        "quiz": {
+          "question": "Welcher Körperteil wird am wenigsten müde?",
+          "options": ["Arme", "Beine", "Finger"],
+          "correct": 1
+        }
+      },
+      {
+        "title": "Ziel",
+        "text": "Um eine Route zu schaffen: bis zum Endgriff und 3 Sekunden halten."
+      },
+      {
+        "title": "Zirkel",
+        "text": "Folge den Farben! 🟢 Leicht, 🟡 Mittel, 🔴 Schwer"
+      },
+      {
+        "title": "Tipps",
+        "text": "Pause machen, atmen und Spaß haben!"
+      }
+    ]
+  },
+  "circuit": {
+    "invalid": "Ungültiger Zirkel",
+    "header": "{emoji} Zirkel {number} — {label}",
+    "routeProgress": "Route {current} / {total}",
+    "pointsCelebration": "🎉 +10 Pkt",
+    "difficulty": "Schwierigkeit",
+    "routeLabel": "Route {number}",
+    "coachTip": "Coach-Tipp",
+    "objective": "Ziel: Endgriff erreichen und 3 Sekunden halten.",
+    "success": "✓ Geschafft!",
+    "skip": "❌ Zu schwer, überspringen",
+    "meta": {
+      "1": { "label": "Leicht", "emoji": "🟢" },
+      "2": { "label": "Mittel", "emoji": "🟡" },
+      "3": { "label": "Schwer", "emoji": "🔴" }
+    },
+    "tips": {
+      "1": [
+        "Hüfte nah an der Wand",
+        "Nutze deine Füße!",
+        "Ruhig atmen",
+        "Besten Tritt suchen",
+        "Knie beugen",
+        "Schau wohin du gehst",
+        "Arme strecken zum Ausruhen",
+        "Gewichtsverlagerung",
+        "Ganzen Körper einsetzen",
+        "Fast geschafft!"
+      ],
+      "2": [
+        "Technik vor Kraft",
+        "Hüfte drehen",
+        "Weit vorausschauen",
+        "Dynamisches Gleichgewicht",
+        "Core aktivieren",
+        "Kleine Schritte",
+        "Vorher ausruhen",
+        "Versteckte Griffe suchen",
+        "Fuß-Hand-Koordination",
+        "Letzter Einsatz!"
+      ],
+      "3": [
+        "Wand genau beobachten",
+        "Sequenz planen",
+        "Präzise Tritte",
+        "Abstieg kontrollieren",
+        "Tief atmen",
+        "Vertrau dir selbst",
+        "Explosive Bewegung",
+        "Maximale Spannung"
+      ]
+    }
+  },
+  "celebration": {
+    "title": "Bravo {name}!",
+    "circuitDone": "Zirkel {number} abgeschlossen",
+    "routesSuccess": "Geschaffte Routen",
+    "totalTime": "Gesamtzeit",
+    "avgPerRoute": "Ø / Route",
+    "pointsEarned": "Punkte verdient",
+    "beginnerLevel": "Anfängerlevel",
+    "badgesUnlocked": "Abzeichen freigeschaltet",
+    "photobooth": "📸 Photobooth & Teilen",
+    "nextCircuit": "→ Zirkel {number}",
+    "leaderboard": "🏆 Rangliste ansehen",
+    "badges": {
+      "apprentice": "Lehrling",
+      "first_circuit": "Erster Zirkel",
+      "perfect_run": "Fehlerfrei",
+      "fast": "Schnell (< 15 Min)",
+      "circuit_2": "Zirkel 2",
+      "circuit_3": "Zirkel 3"
+    }
+  },
+  "photobooth": {
+    "title": "Photobooth 📸",
+    "shareReady": "Bild fertig — Lade herunter und teile aus deiner Galerie.",
+    "shareTitle": "Meine Klettersession",
+    "whatsapp": "Ich habe Zirkel {circuit} bei {gym} geschafft! 🧗 #klettern #anfänger",
+    "shareInstagram": "📱 Instagram Story teilen",
+    "shareWhatsapp": "💬 WhatsApp teilen",
+    "download": "⬇️ Bild herunterladen",
+    "continue": "Weiter →",
+    "canvas": {
+      "circuitDone": "ZIRKEL {number} GESCHAFFT! 🎉",
+      "stats": "{routes} Routen • {duration}",
+      "hashtags": "#klettern #anfänger",
+      "brand": "SUPR Climb Guide"
+    }
+  },
+  "leaderboard": {
+    "title": "🏆 Rangliste",
+    "subtitle": "Diese Woche — {gym}",
+    "empty": "Noch keine Punkte diese Woche.",
+    "circuitOne": "{count} Zirkel",
+    "circuitMany": "{count} Zirkel",
+    "points": "{points} Pkt",
+    "yourRank": "Dein Platz: #{rank}",
+    "continue": "Weiter →"
+  },
+  "reminder": {
+    "title": "Bis bald! 👋",
+    "savedUntil": "Deine Stats sind bis zum {date} gespeichert (10 Tage).",
+    "stats": "{points} Punkte · {circuits} Zirkel abgeschlossen",
+    "freeAccount": "Kostenloses Konto",
+    "freeAccountDesc": "Erstelle ein Konto, um deinen Fortschritt dauerhaft zu speichern (bald verfügbar).",
+    "createAccount": "Konto erstellen (V1.1)",
+    "finish": "✓ Session beenden",
+    "exploreHub": "Hallen-Hub erkunden"
+  }
+}

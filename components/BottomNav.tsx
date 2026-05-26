@@ -51,7 +51,7 @@ export default function BottomNav() {
   ]
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-black border-t border-supr-border safe-area-bottom z-50 md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-supr-border safe-area-bottom z-50 md:hidden">
       <div className="grid grid-cols-4 h-16">
         {navItems.map((item) => {
           const Icon = item.icon
@@ -60,9 +60,7 @@ export default function BottomNav() {
               key={item.label}
               onClick={() => router.push(item.href)}
               className={`flex flex-col items-center justify-center gap-1 transition-colors ${
-                item.active
-                  ? 'text-supr-orange'
-                  : 'text-gray-500 hover:text-gray-300'
+                item.active ? 'text-supr-mint' : 'text-black hover:text-supr-mint'
               }`}
             >
               <Icon className={`w-5 h-5 ${item.active ? 'scale-110' : ''}`} />

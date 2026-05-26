@@ -8,11 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'supr-orange': '#FF6B35',
-        'supr-dark': '#1C1C1C',
-        'supr-black': '#000000',
-        'supr-surface': '#141414',
-        'supr-border': '#2a2a2a',
+        'supr-orange': '#14b8a6',
+        'supr-mint': '#14b8a6',
+        'supr-mint-light': '#f5f5f4',
+        'supr-mint-dark': '#000000',
+        'supr-cream': '#fffbf7',
+        'supr-dark': '#000000',
+        'supr-black': '#fffbf7',
+        'supr-surface': '#ffffff',
+        'supr-border': '#e7e2db',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

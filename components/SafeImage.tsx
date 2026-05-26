@@ -16,8 +16,8 @@ export default function SafeImage({
   src,
   alt,
   className = 'absolute inset-0 w-full h-full object-cover',
-  fallbackClassName = 'absolute inset-0 flex items-center justify-center bg-gradient-to-br from-supr-orange/30 to-black',
-  iconClassName = 'w-10 h-10 text-white/25',
+  fallbackClassName = 'absolute inset-0 flex items-center justify-center bg-stone-100',
+  iconClassName = 'w-10 h-10 text-black/20',
   accentColor,
 }: SafeImageProps) {
   const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>(() =>

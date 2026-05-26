@@ -1,0 +1,181 @@
+{
+  "landing": {
+    "notFound": "Gym not found",
+    "backHome": "Back to SUPR home",
+    "welcome": "Welcome to {name}!",
+    "defaultSubtitle": "Ready for your bouldering initiation?",
+    "start": "Start my initiation 🚀",
+    "meta": "Guided route · 3 circuits · ~30 min",
+    "demoBanner": "🎬 DEMO MODE — See how it works in your gym!"
+  },
+  "confirm": {
+    "title": "Is this the right gym?",
+    "yes": "✓ Yes, that's it",
+    "change": "❌ Change gym",
+    "chooseGym": "Choose a gym"
+  },
+  "profile": {
+    "title": "Your climber profile",
+    "subtitle": "A few details to personalize your route",
+    "nameLabel": "First name or nickname *",
+    "namePlaceholder": "e.g. Alex",
+    "levelLabel": "Your level",
+    "levelNever": "Never climbed",
+    "levelFew": "1-3 times",
+    "levelRegular": "Regularly",
+    "photoSoon": "Profile photo: coming soon (V1.1)",
+    "errorName": "Enter your first name or nickname",
+    "errorSession": "Could not create session. Try again.",
+    "submitting": "Creating…",
+    "continue": "Continue →"
+  },
+  "tutorial": {
+    "progress": "Tutorial {current}/{total}",
+    "quizError": "Not quite — try again!",
+    "next": "Next →",
+    "startCircuit": "Start circuit 1 🟢",
+    "back": "← Back",
+    "slides": [
+      {
+        "title": "Safety",
+        "text": "Before climbing, check the landing zone and wait until no one is below you.",
+        "quiz": {
+          "question": "What should you do if someone is climbing above you?",
+          "options": ["Climb anyway", "Wait for them to come down", "Shout"],
+          "correct": 1
+        }
+      },
+      {
+        "title": "Holds",
+        "text": "Use your feet as much as your hands! Push with your legs.",
+        "quiz": {
+          "question": "Which part gets tired the least?",
+          "options": ["Arms", "Legs", "Fingers"],
+          "correct": 1
+        }
+      },
+      {
+        "title": "Goal",
+        "text": "To complete a route, reach the final hold and hold it for 3 seconds."
+      },
+      {
+        "title": "Circuits",
+        "text": "Follow the colors! 🟢 Easy, 🟡 Medium, 🔴 Hard"
+      },
+      {
+        "title": "Tips",
+        "text": "Rest, breathe, and have fun!"
+      }
+    ]
+  },
+  "circuit": {
+    "invalid": "Invalid circuit",
+    "header": "{emoji} Circuit {number} — {label}",
+    "routeProgress": "Route {current} / {total}",
+    "pointsCelebration": "🎉 +10 pts",
+    "difficulty": "Difficulty",
+    "routeLabel": "Route {number}",
+    "coachTip": "Coach tip",
+    "objective": "Goal: reach the final hold and hold it for 3 seconds.",
+    "success": "✓ I did it!",
+    "skip": "❌ Too hard, skip",
+    "meta": {
+      "1": { "label": "Easy", "emoji": "🟢" },
+      "2": { "label": "Medium", "emoji": "🟡" },
+      "3": { "label": "Hard", "emoji": "🔴" }
+    },
+    "tips": {
+      "1": [
+        "Keep your hips close to the wall",
+        "Use your feet!",
+        "Breathe calmly",
+        "Look for the best foothold",
+        "Bend your knees",
+        "Look where you're going",
+        "Straighten your arms to rest",
+        "Shift your weight",
+        "Engage your whole body",
+        "Almost there!"
+      ],
+      "2": [
+        "Technique before strength",
+        "Rotate your hips",
+        "Look far ahead",
+        "Dynamic balance",
+        "Engage your core",
+        "Small progressive steps",
+        "Rest before this one",
+        "Look for hidden holds",
+        "Foot-hand coordination",
+        "Last push!"
+      ],
+      "3": [
+        "Study the wall carefully",
+        "Plan your sequence",
+        "Precise foot placements",
+        "Control your downclimb",
+        "Deep breathing",
+        "Trust yourself",
+        "Explosive movement",
+        "Maximum core tension"
+      ]
+    }
+  },
+  "celebration": {
+    "title": "Well done {name}!",
+    "circuitDone": "Circuit {number} completed",
+    "routesSuccess": "Routes completed",
+    "totalTime": "Total time",
+    "avgPerRoute": "Avg. / route",
+    "pointsEarned": "Points earned",
+    "beginnerLevel": "Beginner level",
+    "badgesUnlocked": "Badges unlocked",
+    "photobooth": "📸 Photobooth & Share",
+    "nextCircuit": "→ Circuit {number}",
+    "leaderboard": "🏆 View leaderboard",
+    "badges": {
+      "apprentice": "Apprentice",
+      "first_circuit": "First circuit",
+      "perfect_run": "Flawless",
+      "fast": "Fast (< 15 min)",
+      "circuit_2": "Circuit 2",
+      "circuit_3": "Circuit 3"
+    }
+  },
+  "photobooth": {
+    "title": "Photobooth 📸",
+    "shareReady": "Image ready — use Download then share from your gallery.",
+    "shareTitle": "My climbing session",
+    "whatsapp": "I finished circuit {circuit} at {gym}! 🧗 #climbing #beginner",
+    "shareInstagram": "📱 Share Instagram Story",
+    "shareWhatsapp": "💬 Share on WhatsApp",
+    "download": "⬇️ Download image",
+    "continue": "Continue →",
+    "canvas": {
+      "circuitDone": "CIRCUIT {number} COMPLETE! 🎉",
+      "stats": "{routes} routes • {duration}",
+      "hashtags": "#climbing #beginner",
+      "brand": "SUPR Climb Guide"
+    }
+  },
+  "leaderboard": {
+    "title": "🏆 Leaderboard",
+    "subtitle": "This week — {gym}",
+    "empty": "No scores yet this week.",
+    "circuitOne": "{count} circuit",
+    "circuitMany": "{count} circuits",
+    "points": "{points} pts",
+    "yourRank": "Your rank: #{rank}",
+    "continue": "Continue →"
+  },
+  "reminder": {
+    "title": "See you soon! 👋",
+    "savedUntil": "Your stats are saved until {date} (10 days).",
+    "stats": "{points} points · {circuits} circuit(s) completed",
+    "freeAccount": "Free account",
+    "freeAccountDesc": "Create an account to save your progress forever (coming soon).",
+    "createAccount": "Create account (V1.1)",
+    "finish": "✓ End my session",
+    "exploreHub": "Explore gym hub"
+  }
+}

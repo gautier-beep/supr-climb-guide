@@ -1,0 +1,181 @@
+{
+  "landing": {
+    "notFound": "Palestra non trovata",
+    "backHome": "Torna alla home SUPR",
+    "welcome": "Benvenuto/a da {name}!",
+    "defaultSubtitle": "Pronto/a per la tua iniziazione al blocco?",
+    "start": "Inizia la mia iniziazione 🚀",
+    "meta": "Percorso guidato · 3 circuiti · ~30 min",
+    "demoBanner": "🎬 MODALITÀ DEMO — Ecco come funziona nella tua palestra!"
+  },
+  "confirm": {
+    "title": "È la palestra giusta?",
+    "yes": "✓ Sì, è questa",
+    "change": "❌ Cambia palestra",
+    "chooseGym": "Scegli una palestra"
+  },
+  "profile": {
+    "title": "Il tuo profilo scalatore",
+    "subtitle": "Qualche info per personalizzare il percorso",
+    "nameLabel": "Nome o nickname *",
+    "namePlaceholder": "Es.: Alex",
+    "levelLabel": "Il tuo livello",
+    "levelNever": "Mai scalato",
+    "levelFew": "1-3 volte",
+    "levelRegular": "Regolarmente",
+    "photoSoon": "Foto profilo: presto (V1.1)",
+    "errorName": "Inserisci nome o nickname",
+    "errorSession": "Impossibile creare la sessione. Riprova.",
+    "submitting": "Creazione…",
+    "continue": "Continua →"
+  },
+  "tutorial": {
+    "progress": "Tutorial {current}/{total}",
+    "quizError": "Non proprio — riprova!",
+    "next": "Avanti →",
+    "startCircuit": "Inizia circuito 1 🟢",
+    "back": "← Indietro",
+    "slides": [
+      {
+        "title": "Sicurezza",
+        "text": "Prima di scalare, controlla la zona di atterraggio e aspetta che nessuno sia sotto.",
+        "quiz": {
+          "question": "Cosa fare se qualcuno scala sopra di te?",
+          "options": ["Scalo comunque", "Aspetto che scenda", "Urlo"],
+          "correct": 1
+        }
+      },
+      {
+        "title": "Presse",
+        "text": "Usa i piedi quanto le mani! Spingi con le gambe.",
+        "quiz": {
+          "question": "Quale parte si stanca di meno?",
+          "options": ["Le braccia", "Le gambe", "Le dita"],
+          "correct": 1
+        }
+      },
+      {
+        "title": "Obiettivo",
+        "text": "Per completare una via, raggiungi la presa finale e tienila 3 secondi."
+      },
+      {
+        "title": "Circuiti",
+        "text": "Segui i colori! 🟢 Facile, 🟡 Medio, 🔴 Difficile"
+      },
+      {
+        "title": "Consigli",
+        "text": "Riposa, respira e divertiti!"
+      }
+    ]
+  },
+  "circuit": {
+    "invalid": "Circuito non valido",
+    "header": "{emoji} Circuito {number} — {label}",
+    "routeProgress": "Via {current} / {total}",
+    "pointsCelebration": "🎉 +10 pt",
+    "difficulty": "Difficoltà",
+    "routeLabel": "Via {number}",
+    "coachTip": "Consiglio del coach",
+    "objective": "Obiettivo: raggiungere la presa finale e tenerla 3 secondi.",
+    "success": "✓ Ce l'ho fatta!",
+    "skip": "❌ Troppo difficile, salta",
+    "meta": {
+      "1": { "label": "Facile", "emoji": "🟢" },
+      "2": { "label": "Medio", "emoji": "🟡" },
+      "3": { "label": "Difficile", "emoji": "🔴" }
+    },
+    "tips": {
+      "1": [
+        "Tieni i fianchi vicino al muro",
+        "Usa i piedi!",
+        "Respira con calma",
+        "Cerca il miglior appoggio",
+        "Piega le ginocchia",
+        "Guarda dove vai",
+        "Distendi le braccia per riposare",
+        "Trasferimento del peso",
+        "Coinvolgi tutto il corpo",
+        "Ci sei quasi!"
+      ],
+      "2": [
+        "Tecnica prima della forza",
+        "Ruota i fianchi",
+        "Guarda lontano avanti",
+        "Equilibrio dinamico",
+        "Attiva il core",
+        "Piccoli passi progressivi",
+        "Riposa prima",
+        "Cerca appoggi nascosti",
+        "Coordinazione piedi-mani",
+        "Ultimo sforzo!"
+      ],
+      "3": [
+        "Osserva bene il muro",
+        "Pianifica la sequenza",
+        "Appoggi precisi",
+        "Controlla la discesa",
+        "Respirazione profonda",
+        "Fidati di te",
+        "Movimento esplosivo",
+        "Massima tensione del core"
+      ]
+    }
+  },
+  "celebration": {
+    "title": "Bravo {name}!",
+    "circuitDone": "Circuito {number} completato",
+    "routesSuccess": "Vie completate",
+    "totalTime": "Tempo totale",
+    "avgPerRoute": "Media / via",
+    "pointsEarned": "Punti guadagnati",
+    "beginnerLevel": "Livello principiante",
+    "badgesUnlocked": "Badge sbloccati",
+    "photobooth": "📸 Photobooth e condividi",
+    "nextCircuit": "→ Circuito {number}",
+    "leaderboard": "🏆 Vedi classifica",
+    "badges": {
+      "apprentice": "Apprendista",
+      "first_circuit": "Primo circuito",
+      "perfect_run": "Senza errori",
+      "fast": "Veloce (< 15 min)",
+      "circuit_2": "Circuito 2",
+      "circuit_3": "Circuito 3"
+    }
+  },
+  "photobooth": {
+    "title": "Photobooth 📸",
+    "shareReady": "Immagine pronta — usa Scarica e condividi dalla galleria.",
+    "shareTitle": "La mia sessione di arrampicata",
+    "whatsapp": "Ho completato il circuito {circuit} da {gym}! 🧗 #arrampicata #principiante",
+    "shareInstagram": "📱 Condividi Instagram Story",
+    "shareWhatsapp": "💬 Condividi WhatsApp",
+    "download": "⬇️ Scarica immagine",
+    "continue": "Continua →",
+    "canvas": {
+      "circuitDone": "CIRCUITO {number} COMPLETATO! 🎉",
+      "stats": "{routes} vie • {duration}",
+      "hashtags": "#arrampicata #principiante",
+      "brand": "SUPR Climb Guide"
+    }
+  },
+  "leaderboard": {
+    "title": "🏆 Classifica",
+    "subtitle": "Questa settimana — {gym}",
+    "empty": "Nessun punteggio ancora questa settimana.",
+    "circuitOne": "{count} circuito",
+    "circuitMany": "{count} circuiti",
+    "points": "{points} pt",
+    "yourRank": "La tua posizione: #{rank}",
+    "continue": "Continua →"
+  },
+  "reminder": {
+    "title": "A presto! 👋",
+    "savedUntil": "Le tue statistiche sono salvate fino al {date} (10 giorni).",
+    "stats": "{points} punti · {circuits} circuito/i completato/i",
+    "freeAccount": "Account gratuito",
+    "freeAccountDesc": "Crea un account per salvare i progressi per sempre (in arrivo).",
+    "createAccount": "Crea account (V1.1)",
+    "finish": "✓ Termina la sessione",
+    "exploreHub": "Esplora l'hub palestra"
+  }
+}

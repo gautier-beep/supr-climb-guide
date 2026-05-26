@@ -1,0 +1,181 @@
+{
+  "landing": {
+    "notFound": "Rocódromo no encontrado",
+    "backHome": "Volver al inicio SUPR",
+    "welcome": "¡Bienvenido/a a {name}!",
+    "defaultSubtitle": "¿Listo/a para tu iniciación al bloque?",
+    "start": "Empezar mi iniciación 🚀",
+    "meta": "Recorrido guiado · 3 circuitos · ~30 min",
+    "demoBanner": "🎬 MODO DEMO — ¡Así funciona en tu rocódromo!"
+  },
+  "confirm": {
+    "title": "¿Es este el rocódromo correcto?",
+    "yes": "✓ Sí, es este",
+    "change": "❌ Cambiar de rocódromo",
+    "chooseGym": "Elegir un rocódromo"
+  },
+  "profile": {
+    "title": "Tu perfil de escalador",
+    "subtitle": "Algunos datos para personalizar tu recorrido",
+    "nameLabel": "Nombre o apodo *",
+    "namePlaceholder": "Ej.: Alex",
+    "levelLabel": "Tu nivel",
+    "levelNever": "Nunca he escalado",
+    "levelFew": "1-3 veces",
+    "levelRegular": "Regularmente",
+    "photoSoon": "Foto de perfil: pronto (V1.1)",
+    "errorName": "Introduce tu nombre o apodo",
+    "errorSession": "No se pudo crear la sesión. Inténtalo de nuevo.",
+    "submitting": "Creando…",
+    "continue": "Continuar →"
+  },
+  "tutorial": {
+    "progress": "Tutorial {current}/{total}",
+    "quizError": "No del todo — ¡inténtalo otra vez!",
+    "next": "Siguiente →",
+    "startCircuit": "Empezar circuito 1 🟢",
+    "back": "← Volver",
+    "slides": [
+      {
+        "title": "Seguridad",
+        "text": "Antes de escalar, comprueba la zona de caída y espera a que nadie esté debajo.",
+        "quiz": {
+          "question": "¿Qué hacer si alguien escala encima de ti?",
+          "options": ["Escalo igualmente", "Espero a que baje", "Grito"],
+          "correct": 1
+        }
+      },
+      {
+        "title": "Agarres",
+        "text": "¡Usa los pies tanto como las manos! Empuja con las piernas.",
+        "quiz": {
+          "question": "¿Qué parte se cansa menos?",
+          "options": ["Los brazos", "Las piernas", "Los dedos"],
+          "correct": 1
+        }
+      },
+      {
+        "title": "Objetivo",
+        "text": "Para validar una vía, sube hasta el agarre final y mantenlo 3 segundos."
+      },
+      {
+        "title": "Circuitos",
+        "text": "¡Sigue los colores! 🟢 Fácil, 🟡 Medio, 🔴 Difícil"
+      },
+      {
+        "title": "Consejos",
+        "text": "¡Descansa, respira y diviértete!"
+      }
+    ]
+  },
+  "circuit": {
+    "invalid": "Circuito no válido",
+    "header": "{emoji} Circuito {number} — {label}",
+    "routeProgress": "Vía {current} / {total}",
+    "pointsCelebration": "🎉 +10 pts",
+    "difficulty": "Dificultad",
+    "routeLabel": "Vía {number}",
+    "coachTip": "Consejo del coach",
+    "objective": "Objetivo: alcanzar el agarre final y mantenerlo 3 segundos.",
+    "success": "✓ ¡Lo logré!",
+    "skip": "❌ Muy difícil, pasar",
+    "meta": {
+      "1": { "label": "Fácil", "emoji": "🟢" },
+      "2": { "label": "Medio", "emoji": "🟡" },
+      "3": { "label": "Difícil", "emoji": "🔴" }
+    },
+    "tips": {
+      "1": [
+        "Mantén las caderas cerca del muro",
+        "¡Usa los pies!",
+        "Respira con calma",
+        "Busca el mejor apoyo",
+        "Flexiona las rodillas",
+        "Mira hacia dónde vas",
+        "Estira los brazos para descansar",
+        "Transferencia de peso",
+        "Compromete todo el cuerpo",
+        "¡Ya casi estás!"
+      ],
+      "2": [
+        "Técnica antes que fuerza",
+        "Gira las caderas",
+        "Mira lejos adelante",
+        "Equilibrio dinámico",
+        "Activa el core",
+        "Pasos pequeños y progresivos",
+        "Descansa antes",
+        "Busca agarres ocultos",
+        "Coordinación pies-manos",
+        "¡Último esfuerzo!"
+      ],
+      "3": [
+        "Observa bien el muro",
+        "Planifica tu secuencia",
+        "Colocaciones precisas",
+        "Controla el descenso",
+        "Respiración profunda",
+        "Confía en ti",
+        "Movimiento explosivo",
+        "Máxima tensión del core"
+      ]
+    }
+  },
+  "celebration": {
+    "title": "¡Bravo {name}!",
+    "circuitDone": "Circuito {number} terminado",
+    "routesSuccess": "Vías completadas",
+    "totalTime": "Tiempo total",
+    "avgPerRoute": "Media / vía",
+    "pointsEarned": "Puntos ganados",
+    "beginnerLevel": "Nivel principiante",
+    "badgesUnlocked": "Insignias desbloqueadas",
+    "photobooth": "📸 Photobooth y compartir",
+    "nextCircuit": "→ Circuito {number}",
+    "leaderboard": "🏆 Ver clasificación",
+    "badges": {
+      "apprentice": "Aprendiz",
+      "first_circuit": "Primer circuito",
+      "perfect_run": "Sin fallos",
+      "fast": "Rápido (< 15 min)",
+      "circuit_2": "Circuito 2",
+      "circuit_3": "Circuito 3"
+    }
+  },
+  "photobooth": {
+    "title": "Photobooth 📸",
+    "shareReady": "Imagen lista — usa Descargar y comparte desde tu galería.",
+    "shareTitle": "Mi sesión de escalada",
+    "whatsapp": "¡Terminé el circuito {circuit} en {gym}! 🧗 #escalada #principiante",
+    "shareInstagram": "📱 Compartir Instagram Story",
+    "shareWhatsapp": "💬 Compartir WhatsApp",
+    "download": "⬇️ Descargar imagen",
+    "continue": "Continuar →",
+    "canvas": {
+      "circuitDone": "¡CIRCUITO {number} TERMINADO! 🎉",
+      "stats": "{routes} vías • {duration}",
+      "hashtags": "#escalada #principiante",
+      "brand": "SUPR Climb Guide"
+    }
+  },
+  "leaderboard": {
+    "title": "🏆 Clasificación",
+    "subtitle": "Esta semana — {gym}",
+    "empty": "Aún no hay puntuaciones esta semana.",
+    "circuitOne": "{count} circuito",
+    "circuitMany": "{count} circuitos",
+    "points": "{points} pts",
+    "yourRank": "Tu posición: #{rank}",
+    "continue": "Continuar →"
+  },
+  "reminder": {
+    "title": "¡Hasta pronto! 👋",
+    "savedUntil": "Tus estadísticas se guardan hasta el {date} (10 días).",
+    "stats": "{points} puntos · {circuits} circuito(s) completado(s)",
+    "freeAccount": "Cuenta gratuita",
+    "freeAccountDesc": "Crea una cuenta para guardar tu progreso para siempre (próximamente).",
+    "createAccount": "Crear cuenta (V1.1)",
+    "finish": "✓ Terminar mi sesión",
+    "exploreHub": "Explorar el hub del rocódromo"
+  }
+}

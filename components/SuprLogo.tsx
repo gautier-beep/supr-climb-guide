@@ -5,20 +5,25 @@ import SafeLogo from './SafeLogo'
 interface SuprLogoProps {
   className?: string
   boxClassName?: string
+  variant?: 'light' | 'dark'
 }
 
 export default function SuprLogo({
   className = 'max-h-14 max-w-full object-contain',
   boxClassName = 'h-14 w-auto min-w-[3rem]',
+  variant = 'light',
 }: SuprLogoProps) {
+  const src = variant === 'light' ? '/supr-logo-wb.png' : '/supr-logo.png'
+
   return (
     <SafeLogo
-      src="/supr-logo.png"
+      src={src}
       alt="SUPR Climbing"
       name="SUPR"
-      color="#FF6B35"
+      color="#000000"
       className={className}
       boxClassName={boxClassName}
+      variant={variant}
     />
   )
 }

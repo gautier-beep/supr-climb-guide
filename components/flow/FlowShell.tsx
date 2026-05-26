@@ -3,6 +3,8 @@
 import type { Gym } from '@/lib/supabase'
 import GymLogo from '@/components/GymLogo'
 
+const DEFAULT_MINT = '#14b8a6'
+
 interface FlowShellProps {
   gym: Gym
   gymSlug: string
@@ -16,14 +18,16 @@ export default function FlowShell({
   children,
   className = '',
 }: FlowShellProps) {
-  const bg = gym.secondary_color || '#1a1a2e'
+  const accent = gym.primary_color || DEFAULT_MINT
 
   return (
     <div
-      className={`min-h-screen max-w-md mx-auto ${className}`}
-      style={{
-        background: `linear-gradient(165deg, ${bg} 0%, #000000 55%)`,
-      }}
+      className={`min-h-screen max-w-md mx-auto bg-supr-cream text-black ${className}`}
+      style={
+        {
+          '--flow-accent': accent,
+        } as React.CSSProperties
+      }
     >
       <div className="px-4 py-6">{children}</div>
     </div>
@@ -47,18 +51,18 @@ export function FlowHeader({
         slug={gymSlug}
         name={gym.name}
         logoUrl={gym.logo_url}
-        primaryColor={gym.primary_color}
+        primaryColor={gym.primary_color || DEFAULT_MINT}
         size="md"
       />
-      {title && <h1 className="text-2xl font-bold text-white mt-4">{title}</h1>}
-      {subtitle && <p className="text-gray-300 text-sm mt-2">{subtitle}</p>}
+      {title && <h1 className="text-2xl font-bold text-black mt-4">{title}</h1>}
+      {subtitle && <p className="text-black text-sm mt-2">{subtitle}</p>}
     </div>
   )
 }
 
 export function FlowCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`bg-white text-gray-900 shadow-lg rounded-2xl p-6 ${className}`}>
+    <div className={`bg-white text-black shadow-sm border border-supr-border rounded-2xl p-6 ${className}`}>
       {children}
     </div>
   )
@@ -84,8 +88,8 @@ export function PrimaryButton({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`w-full text-white rounded-xl px-6 py-4 font-bold text-lg transition-all duration-300 hover:opacity-90 disabled:opacity-50 ${className}`}
-      style={{ backgroundColor: color || 'var(--primary-color, #FF6B35)' }}
+      className={`w-full text-white rounded-xl px-6 py-4 font-bold text-lg transition-all duration-300 hover:opacity-90 disabled:opacity-50 shadow-sm ${className}`}
+      style={{ backgroundColor: color || 'var(--primary-color, #14b8a6)' }}
     >
       {children}
     </button>
@@ -108,7 +112,7 @@ export function SecondaryButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`w-full bg-transparent border-2 border-white/30 text-white rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:bg-white/10 disabled:opacity-50 ${className}`}
+      className={`w-full bg-white border-2 border-black/15 text-black rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:bg-stone-50 disabled:opacity-50 ${className}`}
     >
       {children}
     </button>
@@ -117,8 +121,8 @@ export function SecondaryButton({
 
 export function LoadingScreen() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-supr-orange" />
+    <div className="min-h-screen flex items-center justify-center bg-supr-cream text-black">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-supr-mint" />
     </div>
   )
 }
