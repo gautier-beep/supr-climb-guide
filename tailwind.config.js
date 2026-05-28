@@ -8,6 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        ink: '#1c1917',
+        'ink-muted': '#57534e',
+        cream: '#faf8f5',
+        border: '#e8e4de',
+        mineral: '#3d6b6b',
         'supr-orange': '#14b8a6',
         'supr-mint': '#14b8a6',
         'supr-mint-light': '#f5f5f4',
@@ -19,7 +24,12 @@ module.exports = {
         'supr-border': '#e7e2db',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+      },
+      boxShadow: {
+        editorial: '0 8px 30px rgba(28, 25, 23, 0.06)',
+        lift: '0 2px 8px rgba(28, 25, 23, 0.04)',
       },
     },
   },
